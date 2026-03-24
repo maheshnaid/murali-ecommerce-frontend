@@ -1,0 +1,74 @@
+.wish-item-img{
+    width: 150px;
+}
+
+.wish-item-container{
+    background-color: transparent;
+}
+
+.img-container{
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+.move-to-cart{
+    width: 100%;
+}
+
+.wishlist-item-name{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: black;
+}
+
+.wishlist-item-brand{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: gray;
+    height: 15px;
+}
+
+@media (max-width:576px){
+    .wishlist-item-name{
+        font-size: 10px;
+    }
+
+.wishlist-item-brand{
+        font-size: 11px;
+    }
+}
+
+.cross-button{
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    margin-top: 10px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+.move-to-cart{
+    height: 35px;
+    color: #ffffff;
+    background-color: #076bf7;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.buttons-container{
+    display: flex;
+    gap: 3px;
+}

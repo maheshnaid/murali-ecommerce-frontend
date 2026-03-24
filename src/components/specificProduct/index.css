@@ -1,0 +1,343 @@
+@media (min-width:768px){
+    .about-container{
+        display: flex;
+        align-items: center;
+    }
+}
+
+@media (max-width:576px){
+    .image-container{
+        display: flex;
+        justify-content: center;
+        margin-bottom: 28px;
+    }
+}
+.specific-product-details{
+    max-width: 380px;
+    padding: 12px;
+}
+
+@media (min-width:576px){
+    .specific-product-details{
+        margin-left: 34px;
+        padding: 0px;
+    }
+}
+
+
+@media(min-width:767px){
+    .specific-product-page{
+        padding-top: 120px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
+.specific-product-img{
+    width: 200px;
+    height: 200px;
+}
+
+@media (min-width:576px){
+    .specific-product-img{
+        width: 380px;
+        height: 380px;
+}
+}
+
+.name{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: black;
+    line-height: 28px;
+}
+
+@media (min-width:576px){
+    .name{
+        font-size: 20px;
+    }
+}
+
+.price{
+    color: black;
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    margin-top: -5px;
+}
+
+@media (min-width:576px){
+    .price{
+        font-size: 16px;
+    }
+}
+
+.rating-and-reviews-container{
+    display: flex;
+    align-items: center;
+    margin-top: -12px;
+}
+
+.rating-container{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 50px;
+    height: 25px;
+    border-radius: 3px;
+    margin-right: 18px;
+}
+
+.review-container{
+    display: flex;
+    align-items: center;
+}
+
+.product-rating{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #000000;
+}
+
+.product-rating-icon{
+    font-size: 18px;
+    margin-top: -2px;
+    color: gold;
+}
+
+.product-reviews-icon{
+    font-size: 22px;
+    margin-right: 5px;
+}
+
+.product-reviews{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    color: #1F2937;
+}
+
+.review-container{
+    margin-top: -4px;
+}
+
+.product-description{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 500;
+    line-height: 20px;
+    font-size: 11px;
+    color:#4B5563;
+    margin-top: 0px;
+}
+
+@media (min-width:576px){
+    .product-description{
+        font-size: 13px;
+        line-height: 23px;
+    }
+}
+
+.available{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #111827;
+}
+
+.brand{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color: #111827;
+}
+
+@media (max-width:576px){
+    .available{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 13px;
+    }
+
+    .brand{
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 13px;
+    }
+}
+
+.Available{
+    color: #4B5563;
+    font-size: 14px;
+}
+
+.Brand{
+    color: #4B5563;
+    font-size: 14px;
+}
+
+@media (max-width:576px){
+    .Available{
+        font-size: 12px;
+    }
+
+.brand{
+    font-size: 12px;
+    }
+}
+
+.h-line{
+    border: 1px solid #cfcfd1;
+}
+
+.quantity-container{
+    display: flex;
+    align-items: center;
+}
+
+.quantity-button{
+    height: 25px;
+    width: 25px;
+    background-color: #ffffff;
+    border: 1px solid #cfcfd1;
+    color: black;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.quantity{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    margin-left: 15px;
+    margin-right: 15px;
+
+}
+.add-toCart{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 35px;
+    font-size: 12px;
+    color: #ffffff;
+    background-color: #076bf7;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.add-wishlist{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 35px;
+    font-size: 12px;
+    color: #ffffff;
+    background-color: #076bf7;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 12px;
+}
+
+.simillar-product-container{
+    margin-top: 10px;
+    padding: 6px;
+}
+
+
+.simillar-product-list{
+    padding-left: 0px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 6px;
+    list-style-type: none;
+    margin-top: 0px;
+    width: 800px;
+}
+
+
+@media (max-width:768px){
+    .simillar-product-list{
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));;
+        width: 100%;
+    }
+}
+
+.similar-heading{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 28px;
+    padding-left: 6px;
+}
+
+@media (max-width:768px){
+    .similar-heading{
+        font-size: 18px;
+    }
+}
+
+.loading-container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-container{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-image{
+    height: 280px;
+}
+
+@media (max-width:576px){
+    .error-image{
+        height: 180px;
+    }
+}
+
+.error-heading{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 26px;
+    text-align: center;
+}
+
+@media (max-width:576px){
+    .error-heading{
+        height: 21px;
+        font-size: 14px;
+    }
+}
+
+.error-note{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 19px;
+    text-align: center;
+    line-height: 23px;
+    margin-top: 0px;
+}
+
+@media (max-width:576px){
+    .error-note{
+        height: 21px;
+        font-size: 15px;
+    }
+}
+
+.try-again{
+    height: 35px;
+    width: 110px;
+    border: none;
+    border-radius: 4px;
+    background-color: #076bf7;
+    color: #ffffff;
+    margin-top: 25px;
+}
+
+.left-arrow{
+    color: gray;
+    margin-left: 12px;
+}
+
+@media (min-width:768px){
+    .left-arrow{
+     display: none;
+    }
+}

@@ -1,0 +1,142 @@
+.cart-item-container{
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 0px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+}
+
+.cart-item-img{
+    height: 60px;
+    width: 80px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@media (max-width:576px){
+    .cart-item-img{
+        height: 50px;
+        width: 50px;
+    }
+}
+
+
+.quantityButton{
+    height: 22px;
+    width: 22px;
+    background-color: #ffffff;
+    border: 1px solid gray;
+    border-radius: 2px;
+    color: #000000;
+    color: gray;
+    cursor: pointer;
+}
+
+@media (max-width:576px){
+    .quantityButton{
+        height: 20px;
+        width: 20px;
+    }
+}
+
+.item-quantity{
+    margin-left: 9px;
+    margin-right: 9px;
+}
+
+.price-delete-con{
+    display: flex;
+    align-items: center;
+}
+
+.cross-btn{
+    background-color: #ffffff;
+    border: none;
+}
+
+.cross-icon{
+    font-size: 16px;
+    color: black;
+    cursor: pointer;
+}
+
+@media (max-width:576px){
+    .cross-icon{
+        font-size: 13px;
+    }
+}
+
+.cart-item-proce{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: black;
+}
+
+@media (max-width:576px){
+    .cart-item-proce{
+        font-size: 11px;
+    }
+}
+
+.price-delete-con{
+    width: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+@media (max-width:576px){
+    .price-delete-con{
+        width: 90px;
+    }
+}
+
+.cart-item-name{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #000000;
+}
+
+@media (max-width:576px){
+    .cart-item-name{
+        font-size: 6px;
+    }
+}
+
+.cart-item-des{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #000000;
+}
+
+@media (max-width:576px){
+    .cart-item-des{
+        font-size: 6px;
+    }
+}
+
+.img-title-container{
+    display: flex;
+    align-items: center;
+}
+
+.cart-item-title{
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 17px;
+    color: #000000;
+}
+
+.cart-item-brand{
+    font-size: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: gray;
+}
+
+.title-brand-container{
+    width: 150px;
+}
