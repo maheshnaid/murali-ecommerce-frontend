@@ -30,7 +30,7 @@ const LoginPage = (props) => {
     const userCanLogin = async  () => {
         changeLoadingStatus(true)
         const userDetails = {name, password}
-        const api = 'http://localhost:7000/login'
+        const api = 'https://your-backend-name.onrender.com/login'
         const optins = {
             method:'POST',
             headers:{
@@ -40,7 +40,7 @@ const LoginPage = (props) => {
         }
         const fetchResponse = await fetch(api, optins)
         const fetchData = await fetchResponse.json()
-        console.log(fetchData)
+        
         if(fetchResponse.ok){
             authenticationSucceed(fetchData)
             changeLoadingStatus(false)

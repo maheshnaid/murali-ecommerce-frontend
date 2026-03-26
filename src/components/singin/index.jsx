@@ -83,6 +83,7 @@ class Signup extends Component{
     }
 
     signupFailed = (errors) => {
+        console.log(errors)
         this.setState({
             emailError:errors.email_error,
             passwordError:errors.password_error
@@ -93,7 +94,7 @@ class Signup extends Component{
     allClearSignupUser = async () => {
         this.setState({loaderStatus:true})
         const {name, email, password} = this.state
-        const registerApi = 'http://localhost:7000/register'
+        const registerApi = 'https://your-backend-name.onrender.com/register'
         const userDetails = {username:name, email, password}
         const options = {
             method:'POST',
