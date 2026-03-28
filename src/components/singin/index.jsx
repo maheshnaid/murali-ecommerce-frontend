@@ -94,7 +94,7 @@ class Signup extends Component{
     allClearSignupUser = async () => {
         this.setState({loaderStatus:true})
         const {name, email, password} = this.state
-        const registerApi = 'https://your-backend-name.onrender.com/register'
+        const registerApi = 'https://murali-backend-1.onrender.com/register'
         const userDetails = {username:name, email, password}
         const options = {
             method:'POST',

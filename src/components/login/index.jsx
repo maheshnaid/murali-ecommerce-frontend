@@ -29,8 +29,8 @@ const LoginPage = (props) => {
 
     const userCanLogin = async  () => {
         changeLoadingStatus(true)
-        const userDetails = {name, password}
-        const api = 'https://your-backend-name.onrender.com/login'
+        const userDetails = {username : name, password: password}
+        const api = 'https://murali-backend-1.onrender.com/login'
         const optins = {
             method:'POST',
             headers:{
