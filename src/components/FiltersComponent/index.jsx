@@ -32,7 +32,7 @@ const Filters = (props) => {
         return (
             <ul className='small-device-category-container'>
                 {categories.map(each => (
-                    <li key={each.id}><button onClick={() => onClickCategory(each.category)} className={`category-button ${userSelectedCategory === each.category ? 'selected-button' : 'unselected-button'}`}>{each.displayText}</button></li>
+                    <li key={each.id}><button onClick={() => onClickCategory(each.category)} className={` ${userSelectedCategory === each.category ? 'selected-button' : 'unselected-button'}`}>{each.displayText}</button></li>
                 ))}
             </ul>
         )
