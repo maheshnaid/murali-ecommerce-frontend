@@ -27,7 +27,7 @@ const Header = (props) => {
 
     const getUserProfile = async () => {
         setApiStatus(apiStatusConstant.loading)
-        const profileAPI = 'http://localhost:7000/profile'
+        const profileAPI = 'https://murali-backend-1.onrender.com/profile'
         const jwtToken = Cookies.get('jwt_token')
         const options = {
             method:'GET',
@@ -92,11 +92,6 @@ const Header = (props) => {
     const isProductsActive = pathname === '/products' ? 'active' : ''
 
     const { cartList } = useContext(cartContext)
-    // const {name} = profile
-    // const fl = name.slice(0,1).toUpperCase()
-    // const ll = name.slice(1).toLowerCase()
-    // const username = data.name === '' ? 'Loading' : fl + ll
-
     const number = cartList.length
 
     return (
@@ -116,7 +111,7 @@ const Header = (props) => {
                 >
                 {close => (
                     <div className='popup-container'>
-                         <p className='popup-note'>Are you sure want to Logout</p>
+                         <p className='popup-note'>Are you sure you want to Logout?</p>
                          <div className='popup-buttons-container'>
                             <button className='Cancel' onClick={close}>No</button>
                             <button className='Yes' onClick={logoutUser}>Yes</button>
@@ -136,7 +131,7 @@ const Header = (props) => {
                 >
                 {close => (
                     <div className='popup-container'>
-                         <p className='popup-note'>Are you sure want to Logout</p>
+                         <p className='popup-note'>Are you sure you want to Logout?</p>
                          <div className='popup-buttons-container'>
                             <button className='Cancel' onClick={close}>No</button>
                             <button className='Yes' onClick={logoutUser}>Yes</button>

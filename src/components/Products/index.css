@@ -114,7 +114,8 @@
     width: 100%;
     display: flex;
     align-items: center;
-    border-radius: 6px;
+    border: 1px solid #F5F5F5;
+    border-radius: 4px;
 }
 
 @media (min-width:768px){
@@ -125,10 +126,10 @@
 
 .search-products-input{
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     border: none;
     outline: none;
-    border-radius: 6px;
+    border-radius: 4px;
 }
 
 .my-container{
