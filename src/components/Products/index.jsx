@@ -111,7 +111,7 @@ class Products extends Component{
     getAllProducts = async () => {
         this.setState({apiStatus:apiStatusConstants.progress})
         const {userInput} = this.state
-        const api = `/api/products/search?q=${userInput}&limit=194`
+        const api = `https://dummyjson.com/products/search?q=${userInput}&limit=194`
         const options = {
             method:'GET'
         }

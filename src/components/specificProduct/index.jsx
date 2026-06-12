@@ -46,7 +46,7 @@ class SpecificProduct extends Component{
         const {match} = this.props
         const {params} = match
         const selectedId = params.id
-        const productApi = `/api/products/${selectedId}`
+        const productApi = `https://dummyjson.com/products/${selectedId}`
         const options = {
             method:'GET'
         }
