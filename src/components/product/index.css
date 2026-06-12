@@ -1,6 +1,16 @@
+.card{
+    transition: 0.3s ease;
+    border-radius: 6px;
+    
+}
+
+.card:hover{
+    transform: scale(1.06);
+}
+
+
 .item{
     text-decoration: none;
-    color: black;
 }
 
 .product-card{
@@ -40,36 +50,40 @@
     font-size: 13px;
     line-height: 16px;
     color: gray;
+    margin-bottom: -6px;
 }
 
-.product-price{
+.final-mrp{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    font-weight: 550;
-    margin-top: 0px;
-}
-
-.product-ratings{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
+    font-size: 10px;
+    color: #111827;
     font-weight: 550;
 }
 
-.price-rating-container{
-    display: flex;
-    align-items: center;
-    margin-top: -8px;
-    margin-left: 12px;
+.mrp{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: gray;
+    text-decoration: line-through;
+    font-weight: 550;
 }
 
-.product-details-container{
-    display: flex;
-    align-items: center;
+.offer{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #EF4444;
 }
 
-.star-icon{
-    color: gold;
-    margin-left: 3px;
-    margin-top: -2px;
-    font-size: 16px;
+@media(min-width:576px) {
+    .final-mrp{ 
+        font-size: 10px;
+    }
+
+    .mrp{
+        font-size: 12px;
+    }
+
+    .offer{
+        font-size: 12px;
+    }
 }

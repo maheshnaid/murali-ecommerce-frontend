@@ -1,10 +1,13 @@
 import './index.css'
 import Header from '../Header'
-import Fotter from '../Fotter'
+import Footer from '../FooterComponent'
 import cartContext from '../../context/cartContext'
 import CartItem from '../cartItem'
 import CartSummary from '../cartSummary'
 import { Link } from 'react-router-dom'
+
+import { MdDelete } from "react-icons/md";
+import { FaArrowLeftLong } from "react-icons/fa6";
 
 const Cart = () => {
 
@@ -27,21 +30,23 @@ const Cart = () => {
                 )
 
                 return (
-                    <div style={{width: `100%`}}>
-                        <h1 className='my-cart'>My Cart</h1>
-                        <div className='clear-all-button-container'>
-                            <div>
-                                <input className='checkbox' checked={allSelected} onChange={onChangeAllSelected} type='checkbox' id='checkbox' />
-                                <label className='label' htmlFor='checkbox'>{noOfSelectedItem}/{cartLength} ITEMS SELECTED</label>
+                    <div className='your-cart'>
+                        <div>
+                            <h1 className='my-cart'>Bag</h1>
+                            <div className='clear-all-button-container'>
+                                <div>
+                                    <input className='checkbox' checked={allSelected} onChange={onChangeAllSelected} type='checkbox' id='checkbox' />
+                                    <label className='label' htmlFor='checkbox'>{noOfSelectedItem}/{cartLength} ITEMS SELECTED</label>
+                                </div>
+                                <button onClick={onClickClearCart} className='clear-button'>Clear Bag</button>
                             </div>
-                            <button onClick={onClickClearCart} className='clear-button'>Clear All</button>
+                            <ul className='ul-cart-list'>
+                                {cartList.map(each => (
+                                    <CartItem cartItemDetails={each} key={each.id} />
+                                ))}
+                            </ul>
                         </div>
-                        <ul className='ul-cart-list'>
-                            {cartList.map(each => (
-                                <CartItem cartItemDetails={each} key={each.id} />
-                            ))}
-                        </ul>
-                        <CartSummary />
+                       <CartSummary />
                     </div>
                 )
             }}
@@ -50,10 +55,9 @@ const Cart = () => {
 
     const renderEmptyCartView = () => (
         <div className='empty-cart-container'>
-            <img src='https://img.freepik.com/premium-vector/empty-cart-illustration-perfect-user-interface-uiux-projects_854078-2080.jpg' alt='empty cart' className='empty-cart-img' />
             <h1 className='empty-cart-heading'>Your cart is feeling little empty</h1>
             <p className='empty-cart-note'>There is nothing in your bag. lets add some items.</p>
-            <Link to='/products'><button className='shop-now'>SHOP NOW</button></Link>
+            <Link to='/wishlist'><button className='add-to-cart'>ADD ITEMS FROM WISHLIST</button></Link>
         </div>
     )
 
@@ -73,9 +77,9 @@ const Cart = () => {
         <>
             <Header />
             <div className='cart'>
+                <Link to='/products'><FaArrowLeftLong className='cart-left-arrow' /></Link>
                 {renderCartPage()}
             </div>
-            <Fotter />
         </>
     )
 }

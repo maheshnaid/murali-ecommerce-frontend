@@ -5,19 +5,19 @@ const Filters = (props) => {
     const renderCategories = () => {
         const {categories, getCategoryMethod, userSelectedCategory} = props
 
-        const onClickCategory = (category) => {
-            getCategoryMethod(category)
+        const onClickCategory = (e) => {
+            getCategoryMethod(e.target.value)
         }
 
 
         return (
             <div className='all-categories'>
                 <h1 className='category-heading'>Categeries</h1>
-                <ul className='categories-container'>
+                <select className='category-options' onChange={onClickCategory}>
                     {categories.map(each => (
-                        <li  onClick={() => onClickCategory(each.category)} className={`category-item ${userSelectedCategory === each.category ? 'selected' : 'not-selected'}`} key={each.id}>{each.displayText}</li>
+                        <option value={each.category} key={each.id}>{each.displayText}</option>
                     ))}
-                </ul>
+                </select>
             </div>
         )
     }
@@ -25,18 +25,20 @@ const Filters = (props) => {
     const renderCategoriesForSmallDevices = () => {
         const { categories, getCategoryMethod, userSelectedCategory } = props 
 
-        const onClickCategory = (category) => {
-            getCategoryMethod(category)
+        const onClickCategory = (value) => {
+            getCategoryMethod(value)
         }
 
         return (
             <ul className='small-device-category-container'>
                 {categories.map(each => (
-                    <li key={each.id}><button onClick={() => onClickCategory(each.category)} className={` ${userSelectedCategory === each.category ? 'selected-button' : 'unselected-button'}`}>{each.displayText}</button></li>
+                    <li key={each.id}><button type='button' onClick={() => onClickCategory(each.category)} className={` ${userSelectedCategory === each.category ? 'selected-button' : 'unselected-button'}`}>{each.displayText}</button></li>
                 ))}
             </ul>
         )
     }
+
+
 
     return (
         <div className='div'>

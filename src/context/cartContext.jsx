@@ -10,12 +10,12 @@ const cartContext = React.createContext({
     addToWishList:() => {},
     removeFromWishList:() => {},
     clearWishList:() => {},
+    addToCartFromWishlist: () => {},
     inCreaseProductQuantity: () => {},
     deCreaseProductQuantity: () => {},
     changeCheckboxStatus: () => {},
     changeAllSelectedStatus: () => {},
-    getUserDetails:() => {},
-    userDetails:{}
+    placeOrder: () => {}
 })
 
 export default cartContext

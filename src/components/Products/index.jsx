@@ -1,22 +1,22 @@
 import { Component } from 'react'
-import Product from '../product'
-import './index.css'
-import Header from '../Header'
+
 import { TailSpin } from 'react-loader-spinner'
-import Fotter from '../Fotter'
-import Filters from '../FiltersComponent'
 import { IoSearchOutline } from "react-icons/io5"
-import { MdSort } from "react-icons/md"
+import { TbArrowsSort } from "react-icons/tb";
 
+import Footer from '../FooterComponent'
+import Filters from '../FiltersComponent'
+import Product from '../product'
+import Header from '../Header'
 
-const apiStatusConstant = {
-    initial:'INITIAL',
-    progress:'PROGRESS',
-    success:'SUCCESS',
-    failure:'FAILURE'
-}
+import './index.css'
 
 const categoriesList = [
+    {
+        id:0,
+        category:'all',
+        displayText:'ALL',
+    },
     {
         id:1,
         category:'clothing',
@@ -80,19 +80,27 @@ const priceSortList = [
     },
 ]
 
+const apiStatusConstants = {
+    initial:'INITIAL',
+    progress:'PROGRESS',
+    success:'SUCCESS',
+    failure:'FAILURE'
+}
 
 class Products extends Component{
 
     state = {
         productsList:[],
-        filteredList:[],
-        selectedCategory:'All',
+        filterProducts:[],
         userInput:'',
-        apiStatus:apiStatusConstant.initial,
+        selectedCategory:'all',
+        apiStatus:apiStatusConstants.initial,
+        categoryStatus:false
     }
 
+
     componentDidMount(){
-        this.getProducts()
+        this.getAllProducts()
     }
 
     updateRating = (rating) => {
@@ -100,130 +108,69 @@ class Products extends Component{
     }
 
 
-    getProducts = async () => {
-        this.setState({apiStatus:apiStatusConstant.progress})
-        let productsApi = `https://dummyjson.com/products?limit=0`
-        const options = {method:'GET'}
-        const fetchResponse = await fetch(productsApi, options)
-        if(fetchResponse.ok){
-            const fetchProducts = await fetchResponse.json()
-            const modifiedData = fetchProducts.products.map(each => ({
-                category:each.category,
-                brand:each.brand,
-                availibilityStatus:each.availibilityStatus,
-                description:each.description,
-                id:each.id,
-                images:each.images,
-                price:each.price,
-                rating:this.updateRating(each.rating),
-                title:each.title,
-                reviews:each.reviews,
-                tags:each.tags,
-                isFavorite:false,
+    getAllProducts = async () => {
+        this.setState({apiStatus:apiStatusConstants.progress})
+        const {userInput} = this.state
+        const api = `/api/products/search?q=${userInput}&limit=194`
+        const options = {
+            method:'GET'
+        }
+        const response = await fetch(api, options)
+        if(response.ok){
+            const responseData = await response.json()
+            const modifiedList = responseData.products.map(each => ({
+                    category:each.category,
+                    brand:each.brand,
+                    availibilityStatus:each.availibilityStatus,
+                    description:each.description,
+                    id:each.id,
+                    images:each.images,
+                    price:each.price,
+                    rating:this.updateRating(each.rating),
+                    title:each.title,
+                    reviews:each.reviews,
+                    tags:each.tags,
+                    discountPercentage:each.discountPercentage
             }))
-            const sortByDesc = modifiedData.sort((product1, products2) => product1.price - products2.price)
+            const sortByPrice = modifiedList?.sort((product1, products2) => product1.price - products2.price)
             this.setState({
-                productsList:modifiedData,
-                filteredList:sortByDesc,
-                apiStatus:apiStatusConstant.success
+                apiStatus:apiStatusConstants.success,
+                productsList:modifiedList,
+                filterProducts:sortByPrice
             })
         }else{
-            this.setState({
-                apiStatus:apiStatusConstant.failure
-            }) 
+            this.setState({apiStatus:apiStatusConstants.failure})
         }
-
-    }
-
-
-    changeIsFavoriteStatus = (id) => {
-        this.setState(prevState => ({
-            productsList:prevState.productsList.map(each => {
-                if(each.id === id){
-                    return {...each, isFavorite:!each.isFavorite}
-                }else{
-                    return each
-                }
-            })
-        }))
-    }
-
-    getCategory = (category) => {
-        const {productsList} = this.state
-        const filterCategoryList = productsList.filter(each => each.tags.includes(category) || each.category === category)
-        this.setState({selectedCategory : category , filteredList : filterCategoryList})
-    }
-
-    renderAllProducts = () => {
-        const {filteredList} = this.state
-
-        return (
-                <ul className='products-list-container'>
-                    {filteredList.map(each => (
-                        <Product changeStatus={this.changeIsFavoriteStatus} productDetails={each} key={each.id}/>
-                    ))}
-                </ul>
-        )
-    }
-
-
-    renderUI = () => {
-        const {selectedCategory} = this.state
-
-        return (
-            <div className='filters-products-container'>
-                <Filters 
-                categories={categoriesList}
-                getCategoryMethod={this.getCategory}
-                userSelectedCategory={selectedCategory}
-                />
-                <div className='my-container'>
-                    {this.rednerSearchInputAndSort()}
-                    {this.renderUIByApiStatus()}
-                </div>
-            </div>
-        )
     }
 
     getSortByValue = (e) => {
-        const { filteredList } = this.state
+        this.setState({categoryStatus:true})
+        const { filterProducts } = this.state
         let sortedProducts = []
-        if(e.target.value === 'asc'){
-            sortedProducts = filteredList.sort((a, b) => a.price - b.price)
-        }else{
-            sortedProducts = filteredList.sort((a, b) => b.price - a.price)
-        }
-
-        this.setState({filteredList : sortedProducts})
+        
+        setTimeout(() => {
+            if(e.target.value === 'asc'){
+                sortedProducts = filterProducts.sort((a, b) => a.price - b.price)
+            }else{
+                sortedProducts = filterProducts.sort((a, b) => b.price - a.price)
+            }
+            this.setState({filterProducts : sortedProducts, categoryStatus:false})
+        },2000)
     }
 
     getUserInput = (e) => {
-        this.setState({userInput:e.target.value})
-    }
-
-    keyDownEvent = (e) => {
-        const { userInput, productsList } = this.state
-        if(e.key === 'Enter'){
-            const filterSearchItems = productsList.filter(each => each.brand ===userInput || each.category.includes(userInput) || each.tags.includes(userInput) || each.title.toLowerCase().includes(userInput))
-            this.setState({filteredList : filterSearchItems})
-        }
-    }
-
-    onClickSearchIcon = () => {
-        const { userInput, productsList } = this.state
-        const filterSearchItems = productsList.filter(each => each.brand === userInput || each.category.includes(userInput) || each.tags.includes(userInput) || each.title.toLowerCase().includes(userInput))
-        this.setState({filteredList : filterSearchItems})
+        this.setState({userInput:e.target.value}, this.getAllProducts)
     }
 
     rednerSearchInputAndSort = () => (
         <div className='search-and-sort-container'>
             <div className='search-product-inout-container'>
-                <input onKeyDown={this.keyDownEvent} onChange={this.getUserInput} className='search-products-input' type='search' />
-                <button onClick={this.onClickSearchIcon} className='search-button'><IoSearchOutline className='search-icon' /></button>
+                <input onChange={this.getUserInput} className='search-products-input' type='search' />
+                <button className='search-button'><IoSearchOutline className='search-icon' /></button>
             </div>
             <div className='sort-container'>
                 <div className='sort-name-icon-container'>
-                    <MdSort className='sort-icon' />
+                    <TbArrowsSort className='sort-icon' />
                     <p className='sort-by'>sort by price</p>
                 </div>
                 <select onChange={this.getSortByValue} className='sort-container'>
@@ -236,22 +183,40 @@ class Products extends Component{
     )
 
 
+    renderAllProducts = () => {
+        const {filterProducts, categoryStatus} = this.state
+
+        return (
+            <>
+                {categoryStatus ?
+                this.renderLoadingView() : 
+                    <ul className='products-list-container'>
+                        {filterProducts?.map(each => (
+                            <Product productDetails={each} key={each.id}/>
+                        ))}
+                    </ul>
+                }
+            </>
+        )
+    }
+
+
     renderLoadingView = () => (
         <div className='loading-container'>
-            <TailSpin color='#0b69ff' height='40' width='40' />
+            <TailSpin color='#1a75ff' height='40' width='40' />
         </div>
     )
 
-    onClickRetry = () => (
-        this.getProducts()
-    )
+    onClickRetry = () => {
+        this.getAllProducts()
+    }
+
 
     renderFailureView = () => (
         <div className='failure-container'>
-            <img src='https://media.istockphoto.com/id/1279275963/vector/system-error-concept.jpg?s=612x612&w=0&k=20&c=c0IkhU0L53Jrvl2AombUcG1aI3-FnXa8f1oH-TMC5vM=' alt='error image' className='failure-image' />
             <h1 className='failure-heading'>Opps! Something Went Wrong</h1>
             <p className='failure-note'>We could't find your request. Please try Again</p>
-            <button onClick={this.onClickRetry} className='re-try'>Retry</button>
+            <button onClick={this.onClickRetry} className='re-try'>Try Again</button>
         </div>
     )
 
@@ -260,29 +225,95 @@ class Products extends Component{
         const {apiStatus} = this.state
 
         switch (apiStatus){
-            case apiStatusConstant.progress:
+            case apiStatusConstants.progress:
                 return this.renderLoadingView()
-            case apiStatusConstant.success:
+            case apiStatusConstants.success:
                 return this.renderAllProducts()
-            case apiStatusConstant.failure:
+            case apiStatusConstants.failure:
                 return this.renderFailureView()
             default:
                 return null
         }
     }
 
+    getCategory = (category) => {
+        this.setState({categoryStatus:true})
+        const {productsList} = this.state
+
+        const filterCategoryList = productsList.filter(each => each.tags.includes(category) || each.category === category)
+        
+        setTimeout(() => {
+            if(category === 'all'){
+                this.setState({filterProducts:productsList})
+            }else{
+                this.setState({selectedCategory : category , filterProducts : filterCategoryList})
+            }
+            this.setState({categoryStatus:false})
+        }, 2000)
+        this.setState({selectedCategory: category})
+    }
+
+    renderUI = () => {
+        const {selectedCategory} = this.state
+
+        return (
+            <div className='filters-products-container'>
+                <div className='filters-container'>
+                    <Filters
+                    categories={categoriesList}
+                    getCategoryMethod={this.getCategory}
+                    userSelectedCategory={selectedCategory}
+                    />
+                </div>
+                <div className='my-container'>
+                    {this.rednerSearchInputAndSort()}
+                    {this.renderUIByApiStatus()}
+                </div>
+            </div>
+        )
+    }
+
 
     render(){
         return(
-        <>
-           <Header />
             <>
-               {this.renderUI()}
+            <Header />
+                <>
+                    {this.renderUI()}
+                </>
+                <Footer />
             </>
-            <Fotter />
-        </>
         )
     }
 }
+
+
+    // changeIsFavoriteStatus = (id) => {
+    //     this.setState(prevState => ({
+    //         productsList:prevState.productsList.map(each => {
+    //             if(each.id === id){
+    //                 return {...each, isFavorite:!each.isFavorite}
+    //             }else{
+    //                 return each
+    //             }
+    //         })
+    //     }))
+    // }
+
+    // keyDownEvent = (e) => {
+    //     const { userInput, productsList } = this.state
+    //     // if(e.key === 'Enter'){
+    //         const filterSearchItems = productsList.filter(each => each.title.toLowerCase().includes(userInput.toLowerCase()))
+    //         this.setState({filteredList : filterSearchItems})
+    //     // }
+    // }
+
+    // onClickSearchIcon = () => {
+    //     const { userInput, productsList } = this.state
+    //     const filterSearchItems = productsList.filter(each => each.brand === userInput || each.category.includes(userInput) || each.tags.includes(userInput) || each.title.toLowerCase().includes(userInput))
+    //     this.setState({filteredList : filterSearchItems})
+    // }
+
+
 
 export default Products

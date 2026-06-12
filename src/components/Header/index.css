@@ -6,15 +6,15 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px;
+    padding:12px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     position: fixed;
     background-color: #ffffff;
     top: 0;
     left: 0;
     width: 100%;
-    margin-bottom: 90px;
 }
+
 
 @media (max-width:576px){
     .header-con{
@@ -25,6 +25,7 @@
 .nav-container{
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-top: 28px;
     padding: 13px;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -34,6 +35,12 @@
     width: 100%;
     background-color: #ffffff;
     margin: 0px;
+}
+
+.bag-wishlist-container{
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 @media (min-width:576px){
@@ -54,8 +61,29 @@
     font-size: 21px;
 }
 
-.nav-icon{
-    font-size: 25px;
+.header-icon{
+    font-size: 21px;
+    margin-bottom: 4px;
+}
+
+.header-icon:hover{
+    color: #1a75ff;
+}
+
+.header-icon:active{
+    animation: icon 0.3s ease-out;
+}
+
+@keyframes icon {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(0.90);
+    }
+    100%{
+        transform: scale(1);
+    }
 }
 
 .exit-button{
@@ -70,43 +98,47 @@
     color: #ffffff;
     background-color: #1A73E8;
     font-weight: 550;
-    border-radius: 4px;
+    border-radius: 2px;
     cursor: pointer; 
-}
-
-.nav-item{
-    text-decoration: none;
-    font-size: 12px;
-    color: gray;
+    transition: all 0.3s ease;
     font-family: Arial, Helvetica, sans-serif;
 }
 
+.logout-button:active{
+    transform: scale(0.90)
+}
+
+.logout-button:hover{
+    background-color: #3385ff;
+}
+
+
+.nav-item{
+    text-decoration: none;
+    font-size: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.nav-item:hover{
+    color: #1a75ff;
+}
+
+
 .link{
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 550;
 }
 
 .active{
-    color: #2563EB;
+    color: #1a75ff;
 }
 
-.logoo{
-    height: 40px;
-}
-
-@media (min-width:576px){
-    .logoo{
-        padding-left: 26px;
-    }
-}
-
-.mini-logo{
-    width: 30px;
-}
-
-.items-count{
-    border: 1px solid red;
-    margin-bottom: 24px;
+.in-active{
+    color: #8c8c8c;
 }
 
 .popup-container{
@@ -140,6 +172,11 @@
     cursor: pointer;
 }
 
+.Cancel:hover{
+    border: 1px solid #3385ff;
+    color: #3385ff;
+}
+
 .Yes{
     height: 30px;
     width: 80px;
@@ -150,6 +187,10 @@
     cursor: pointer;
 }
 
+.Yes:hover{
+    background-color: #3385ff;
+}
+
 .popup-note{
     font-family: Arial, Helvetica, sans-serif;
     color: black;
@@ -157,31 +198,6 @@
     margin-bottom: 22px;
 }
 
-.hello{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
-    margin-bottom: 7px;
-    color: black;
-}
-
-.user-name{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    margin-top: 0px;
-    color: #1A73E8;
-}
-
-@media (max-width:576px){
-    .hello{
-        font-size: 10px;
-        margin-bottom: 7px;
-}
-
-    .user-name{
-        font-size: 13px;
-        margin-top: 0px;
-    }
-}
 
 .mini-navbar{
     width: 160px;
@@ -201,7 +217,63 @@
 }
 
 .span-item{
-    color: #1A73E8;
+    color: #8f8785;
     position: absolute;
-    margin-left: 5px;
+    left: 11px;
+    bottom: 22px;
+    font-size: 8px;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e6f0ff;
+    color: #3366ff;
+}
+
+.wish-list-count{
+    position: absolute;
+    left: 20px;
+    bottom: 22px;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    font-size: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e6f0ff;
+    color: #3366ff;
+}
+
+.header-logo{
+    width: 60px;
+}
+
+.log-out-bag-container{
+    display: flex;
+    align-items: center;
+}
+
+.bag-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    font-size: 9px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 550;
+    margin-right: 15px;
+}
+
+.bag{
+    font-size: 16px;
+    margin-bottom: 3px;
+}
+
+.logout-icon{
+    font-size: 21px;
+    color: #8c8c8c;
+    cursor: pointer;
 }

@@ -5,7 +5,12 @@ import { useEffect, useContext, useState } from 'react'
 import './index.css'
 
 import Popup from 'reactjs-popup'
-import { CiLogout } from "react-icons/ci";
+import { FiLogOut } from "react-icons/fi";
+import {GoHome, GoHomeFill} from 'react-icons/go'
+import { BsHandbagFill, BsHandbag } from "react-icons/bs";
+import { TfiLayoutGrid2Alt , TfiLayoutGrid2  } from "react-icons/tfi";
+import { IoHeartSharp, IoHeartOutline } from "react-icons/io5";
+
 import cartContext from '../../context/cartContext'
 
 const apiStatusConstant = {
@@ -25,88 +30,34 @@ const Header = (props) => {
         history.replace('/login')
     }
 
-    const getUserProfile = async () => {
-        setApiStatus(apiStatusConstant.loading)
-        const profileAPI = 'https://murali-backend-1.onrender.com/profile'
-        const jwtToken = Cookies.get('jwt_token')
-        const options = {
-            method:'GET',
-            headers:{
-                Authorization: `Bearer ${jwtToken}`
-            }
-        }
-        
-        const profileResponse = await fetch(profileAPI, options)
-        if(profileResponse.ok){
-            const profileData = await profileResponse.json()
-            setProfile(profileData)
-            setApiStatus(apiStatusConstant.success)
-        }
-    }
 
-    const renderProfileLoader = () => (
-        <div>
-            <ThreeDots color='#0b69ff' height='20' width='20' />
-        </div>
-    )
-
-    const renderProfile = () => {
-        const {userDetails} = profile
-
-        const firstLatter = userDetails.name.slice(0,1).toUpperCase()
-        const remainingLatters = userDetails.name.slice(1).toLowerCase()
-        const name = firstLatter + remainingLatters
-        
-        return (
-            <div>
-                <p className='hello'>Hello</p>
-                <h1 className='user-name'>{name}</h1>
-            </div>
-        )
-}
-
-    const renderApiStatus = () => {
-        switch(apiStatus){
-            case apiStatusConstant.loading:
-                return renderProfileLoader()
-            case apiStatusConstant.success:
-                return renderProfile()
-            default:
-                return null
-        }
-    }
-
-
-    useEffect(() => {
-        getUserProfile()
-    }, [])
-
-
-    const {history} = props
+    const {history, match} = props
+    const {params} = match
     const {location} = history
     const {pathname} = location
     
-    const isHomeActive = pathname === '/' ? 'active' : ''
-    const isCartActive = pathname === '/cart' ? 'active' : ''
-    const isAboutActive = pathname === '/wishlist' ? 'active' : ''
-    const isProductsActive = pathname === '/products' ? 'active' : ''
+    const isHomeActive = pathname === '/' ? <GoHomeFill className='header-icon active' /> : <GoHome className='header-icon in-active' />
+    const isWishlistActive = pathname === '/wishlist' ? <IoHeartSharp className='header-icon active' /> : <IoHeartOutline className='header-icon in-active'/>
+    const isCartActive = pathname === '/cart' ? <BsHandbagFill className='header-icon active' /> : <BsHandbag className='header-icon in-active' />
+    const isProductsActive = pathname === '/products' ? <TfiLayoutGrid2Alt className='header-icon active' /> : <TfiLayoutGrid2 className='header-icon in-active' />
 
-    const { cartList } = useContext(cartContext)
+    const { cartList, wishList } = useContext(cartContext)
     const number = cartList.length
+    const wishListLen = wishList.length
 
     return (
     <>
         <nav className='header-con'>
             <div>
-                {renderApiStatus()}
+                <img src='https://t4.ftcdn.net/jpg/08/16/83/55/360_F_816835548_Bb5h4u3Kku6kB5m1cDj4wszyvaIV3abW.jpg' className='header-logo' alt='logo' />
             </div>
             <ul className='header-items-con'>
-                <li className='link'><Link to='/' className={`nav-item ${isHomeActive}`}>HOME</Link></li>
-                <li className='link'><Link to='/products' className={`nav-item ${isProductsActive}`}>PRODUCTS</Link></li>
-                <li className='link'><Link to='/wishlist' className={`nav-item ${isAboutActive}`}>WISHLIST</Link></li>
-                <li className='link'><Link to='/cart' className={`nav-item ${isCartActive}`}>CART <span className='span-item'>{number > 0 && number}</span></Link></li>
+                <li className='link'><Link to='/' className={`nav-item ${pathname === '/' ? 'active' : 'in-active'}`}>{isHomeActive}HOME</Link></li>
+                <li className='link'><Link to='/products' className={`nav-item ${pathname === '/products' ? 'active' : 'in-active'}`}>{isProductsActive}PRODUCTS</Link></li>
+                <li className='link'><Link to='/wishlist' className={`nav-item ${pathname === '/wishlist' ? 'active' : 'in-active'}`}>{isWishlistActive}WISHLIST <span className={wishListLen > 0 ? 'wish-list-count' : ''}>{wishListLen > 0 && wishListLen}</span></Link></li>
+                <li className='link'><Link to='/cart' className={`nav-item ${pathname === '/cart' ? 'active' : 'in-active'}`}>{isCartActive}BAG<span className={number > 0 ? 'span-item' : ''}>{number > 0 && number}</span></Link></li>
                 <Popup
-                    trigger={<button className='logout-button' onClick={logoutUser}>Logout</button>}
+                    trigger={<button className='logout-button'>Logout</button>}
                     modal
                 >
                 {close => (
@@ -123,22 +74,26 @@ const Header = (props) => {
         </nav>
             <nav className='nav-container'>
                 <div>
-                    {renderApiStatus()}
+                   <img src='https://t4.ftcdn.net/jpg/08/16/83/55/360_F_816835548_Bb5h4u3Kku6kB5m1cDj4wszyvaIV3abW.jpg' className='header-logo' alt='logo' />
                 </div>
-                <Popup
-                    trigger={<button className='exit-button' onClick={logoutUser}><CiLogout className='nav-icon' /></button>}
-                    modal
-                >
-                {close => (
-                    <div className='popup-container'>
-                         <p className='popup-note'>Are you sure you want to Logout?</p>
-                         <div className='popup-buttons-container'>
-                            <button className='Cancel' onClick={close}>No</button>
-                            <button className='Yes' onClick={logoutUser}>Yes</button>
-                         </div>
-                    </div>
-                )}
-                </Popup>
+                <div className='bag-wishlist-container'>
+                    {pathname === `/products/${params.id}` && <p className='link'><Link to='/wishlist' className={`nav-item ${pathname === '/wishlist' ? 'active' : 'in-active'}`}>{isWishlistActive}WISHLIST <span className={wishListLen > 0 ? 'wish-list-count' : ''}>{wishListLen > 0 && wishListLen}</span></Link></p>}
+                    {pathname === `/products/${params.id}` && <p className='link'><Link to='/cart' className={`nav-item ${pathname === '/cart' ? 'active' : 'in-active'}`}>{isCartActive}BAG<span className={number > 0 ? 'span-item' : ''}>{number > 0 && number}</span></Link></p>}
+                    <Popup
+                        trigger={<button className='exit-button'><FiLogOut className='logout-icon' /></button>}
+                        modal
+                    >
+                    {close => (
+                        <div className='popup-container'>
+                            <p className='popup-note'>Are you sure you want to Logout?</p>
+                            <div className='popup-buttons-container'>
+                                <button className='Cancel' onClick={close}>No</button>
+                                <button className='Yes' onClick={logoutUser}>Yes</button>
+                            </div>
+                        </div>
+                    )}
+                    </Popup>
+                </div>
             </nav>
     </>
     )

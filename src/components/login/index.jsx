@@ -1,36 +1,34 @@
-import { useState, useContext } from 'react'
+import { useState } from 'react'
 import Cookies from 'js-cookie'
-import {Redirect, Link} from 'react-router-dom'
+import {Redirect} from 'react-router-dom'
 import { TailSpin } from 'react-loader-spinner'
-import cartContext from '../../context/cartContext'
+
+import { PiEyeClosed, PiEye } from "react-icons/pi"
 
 import './index.css'
 
 const LoginPage = (props) => {
-    const [name, setName] = useState('')
-    const [password, setPassword] = useState('')
-    const [errors, setErrors] = useState({nameError:'', passwordError:'', backendError : ''})
+    const [userCredentials, setUserCredentials] = useState({username:'', password:''})
+    const [errors, setErrors] = useState({nameError:'', passwordError:'', backendError:''})
     const [showPassword, changeStatus] = useState(false)
     const [loaderStatus, changeLoadingStatus] = useState(false)
 
     const userToken = Cookies.get('jwt_token')
-    const {getUserDetails} = useContext(cartContext)
-
     const authenticationSucceed = (data) => {
         const {history} = props
-        const token = data.jwt_token
+        const token = data.accessToken
         Cookies.set('jwt_token', token, {expires:30})
         history.replace('/')
     }
 
     const authenticationFailed = (error) => {
-        setErrors({backendError : error})
+        setErrors({...errors, backendError:error.message})
     }
 
     const userCanLogin = async  () => {
         changeLoadingStatus(true)
-        const userDetails = {username : name, password: password}
-        const api = 'https://murali-backend-1.onrender.com/login'
+        const userDetails = {username:userCredentials.username, password:userCredentials.password}
+        const api = 'https://dummyjson.com/auth/login'
         const optins = {
             method:'POST',
             headers:{
@@ -44,85 +42,91 @@ const LoginPage = (props) => {
         if(fetchResponse.ok){
             authenticationSucceed(fetchData)
             changeLoadingStatus(false)
-            getUserDetails(fetchData.user_data)
         }else{
-            authenticationFailed(fetchData.error)
+            authenticationFailed(fetchData)
             changeLoadingStatus(false)
         }
+    }
+
+    const getUserName = (e) => {
+        setUserCredentials({...userCredentials, username:e.target.value})
+    }
+
+    const getUserPassword = (e) => {
+        setUserCredentials({...userCredentials, password:e.target.value})
     }
 
     const onClickLogin = (e) => {
         e.preventDefault()
 
-        if(name !== "" && password !== ""){
+        const {username, password} = userCredentials
+
+        if(username !== "" && password !== ""){
             userCanLogin()
         }
 
-        if(name === '' && password === ''){
-            return setErrors({nameError:'name is required', passwordError:'password is required'})
-        }
-
-        if(name === ''){
-            return setErrors({nameError:'name is required'})
+        if(username === ''){
+            setErrors({...errors, nameError:'*Required'})
         }
 
         if(password === ''){
-            return setErrors({passwordError:'password is required'})
+            setErrors({...errors, passwordError:'*Required'})
+        }
+
+        if(username === '' && password === ''){
+            setErrors({...errors, nameError:'*Required', passwordError:'*Required'})
         }
 
     }
 
-    const getUserName = (e) => {
-        setName(e.target.value)
-    }
-
-    const getUserPassword = (e) => {
-        setPassword(e.target.value)
-    }
 
     const changeShowPasswordStatus = () => {
         changeStatus(!showPassword)
     }
 
     const onBlurOnName = () => {
-        if(name === ''){
-            setErrors({nameError:'name is required'})
+        const {username} = userCredentials
+        if(username === ''){
+            setErrors({nameError:'*Required'})
         }else{
             setErrors({nameError:''})
         }
     }
 
     const onBlurOnPassword = () => {
+        const {password} = userCredentials
         if(password === ''){
-            setErrors({passwordError:'password is required'})
+            setErrors({passwordError:'*Required'})
         }else{
             setErrors({passwordError:''})
         }
     }
+    
 
     const renderLoginUi = () => {
         return (
-            <div className='login-container'>
-                <h1 className='sign-up-heading'>Hello Again!</h1>
-                <form onSubmit={onClickLogin} style={{padding:"20px"}}>
-                    <div className="input-field-container">
-                        <label className="label" htmlFor="name">Name</label>
-                        <input onBlur={onBlurOnName} onChange={getUserName} id="name" className="input-field" type="text" />
-                        <p className='error'>{errors.nameError}</p>
-                    </div>
-                    <div className="input-field-container">
-                        <label className="label" htmlFor="password">Password</label>
-                        <input onBlur={onBlurOnPassword} onChange={getUserPassword} id="password" className="input-field" type={showPassword ? 'text' : 'password'} />
-                        <p className='error'>{errors.passwordError}</p>
-                    </div>
-                    <div className='show-password-container'>
-                        <input onChange={changeShowPasswordStatus} id='checkbox' type='checkbox' className='checkbox' />
-                        <label htmlFor='checkbox' className='show-password-label'>Show Password</label>
-                    </div>
-                    <button className='login-button' type='submit'>{loaderStatus ? <TailSpin color='#ffffff' height='20' width='20' /> : 'Login'}</button>
-                    <p className='backend-error'>{errors.backendError}</p>
-                    <p className='login-text'>Don't have an account? <Link className="login" to="/signup">Sign up</Link></p>
-                </form>
+            <div className='login-page-container'>
+                <img src='https://media.istockphoto.com/id/1443921753/vector/a-young-female-african-character-in-denim-overalls-pushing-a-grocery-cart-in-a-supermarket.jpg?s=612x612&w=0&k=20&c=DJqZULOPh7Ki8MKUBjXe_PhM9esJfSHdepFUULiJiTI=' alt='image' className='vector-img' />
+                <div className='login-container'>
+                    <h1 className='login-heading'>Welcome!</h1>
+                    <form onSubmit={onClickLogin} style={{padding:"20px"}}>
+                        <div className="input-field-container">
+                            <label className="input-label" htmlFor="name">Name</label>
+                            <input onBlur={onBlurOnName} onChange={getUserName} id="name" className="input-field" type="text" />
+                            <p className='error'>{errors.nameError}</p>
+                        </div>
+                        <div className="input-field-container">
+                            <label className="input-label" htmlFor="password">Password</label>
+                            <div className='eye-input-container'>
+                                <input onBlur={onBlurOnPassword} onChange={getUserPassword} id="password" className="password-input" type={showPassword ? 'text' : 'password'} />
+                                {userCredentials.password.length > 0 && <button type='button' onClick={changeShowPasswordStatus} className='showpassword-button'>{showPassword ? <PiEye className='eye-icon' /> : <PiEyeClosed className='eye-icon' />}</button>}
+                            </div>
+                            <p className='error'>{errors.passwordError}</p>
+                        </div>
+                        <button className='login-button' type='submit'>{loaderStatus ? <TailSpin color='#ffffff' height='20' width='20' /> : 'Login'}</button>
+                        <p className='backend-error'>{errors.backendError}</p>
+                    </form>
+                </div>
             </div>
         )
     }
@@ -132,7 +136,7 @@ const LoginPage = (props) => {
     }
 
     return (
-        <div className='login-main-container'>
+        <div>
             {renderLoginUi()}
         </div>
     )

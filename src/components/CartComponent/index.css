@@ -1,3 +1,10 @@
+.your-cart{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh;
+}
+
 .cart{
     padding: 28px;
 }
@@ -11,12 +18,29 @@
 
 .ul-cart-list{
     padding-left: 0px;
+    margin-bottom: 50px;
 }
 
 @media(max-width:576px){
     .ul-cart-list{
         padding: 4px;
+       
     }
+}
+
+.add-to-cart{
+    height: 35px;
+    padding: 0px 20px 0px 20px;
+    font-size: 12px;
+    font-weight: 500;
+    color: #ffffff;
+    border: none;
+    background-color: #1a75ff;
+    border-radius: 1px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-weight: 550;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .clear-all-button-container{
@@ -25,19 +49,29 @@
 }
 
 .clear-button{
+    height: 30px;
+    width: 90px;
     background-color: transparent;
-    border: none;
-    font-size: 16px;
-    font-weight: 550;
-    color: #1A73E8;
+    font-size: 15px;
+    font-weight: 500;
+    border: 1px solid #8f8785;
     font-family: Arial, Helvetica, sans-serif;
     cursor: pointer;
+    border-radius: 2px;
+    border: 1px solid #1a75ff;
+    color: #1a75ff;
 }
 
 @media (max-width:576px){
     .clear-button{
         font-size: 13px;
     }
+}
+
+.delete-icon{
+    margin-left: 8px;
+    font-size: 20px;
+    
 }
 
 .my-cart{
@@ -53,31 +87,31 @@
 }
 
 .empty-cart-img{
-    width: 200px;
+    width: 250px;
 }
 
 @media (max-width:576px){
     .empty-cart-img{
-        width: 150px;
+        width: 170px;
     }
 }
 
 .empty-cart-heading{
-    color: #111827;
+    color: #000000;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 25px;
+    font-size: 21px;
     text-align: center;
 }
 
 @media (max-width:576px){
     .empty-cart-heading{
-        font-size: 18px;
+        font-size: 16px;
     }
 }
 
 .empty-cart-note{
     text-align: center;
-    font-size: 19px;
+    font-size: 15px;
     font-family: Arial, Helvetica, sans-serif;
     color: #9CA3AF;
     margin-top: 0px;
@@ -86,12 +120,12 @@
 
 @media (max-width:576px){
     .empty-cart-note{
-        font-size: 16px;
+        font-size: 14px;
     }
 }
 
 .empty-cart-container{
-    height: 80vh;
+    height: 60vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -117,5 +151,15 @@
 
     .checkbox{
         height: 11px;
+    }
+}
+
+.cart-left-arrow{
+    color: gray;
+}
+
+@media(min-width:576px){
+    .cart-left-arrow{
+        display: none;
     }
 }

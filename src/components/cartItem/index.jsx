@@ -2,6 +2,8 @@ import './index.css'
 import { useState } from 'react';
 import { FaTrash } from "react-icons/fa6";
 import cartContext from '../../context/cartContext';
+import toast from 'react-hot-toast';
+import { MdDelete } from "react-icons/md";
 
 const CartItem = (props) => {
     const {cartItemDetails} = props
@@ -17,7 +19,13 @@ const CartItem = (props) => {
                 const {removeFromCart, inCreaseProductQuantity, deCreaseProductQuantity, changeCheckboxStatus} = value
 
                 const onClickRemoveFromCart = () => (
-                        removeFromCart(id)
+                        removeFromCart(id),
+                        toast.success("Item Removed",{
+                            icon: <FaTrash className='trash-icon' />,
+                            duration:2000,
+                            position:'bottom-center',
+                            className:'toast'
+                        })
                     )
 
                 const decreaseQuantity = () => (
@@ -44,13 +52,16 @@ const CartItem = (props) => {
                             </div>
                         </div>
                         
+                        
                         <div className='quantity-container'>
-                            <button onClick={decreaseQuantity} className='quantityButton'>-</button>
+                            <button onClick={decreaseQuantity} className='quantity-button'>-</button>
                             <h5 className='item-quantity'>{quantity}</h5>
-                            <button onClick={increaseQuantity} className='quantityButton'>+</button>
+                            <button onClick={increaseQuantity} className='quantity-button'>+</button>
                         </div>
+
+
                         <div className='price-delete-con'>
-                            <p className='cart-item-proce'>Rs {inRupees} /-</p>
+                            <p className='cart-item-price'>Rs {inRupees} /-</p>
                             <button onClick={onClickRemoveFromCart} className='cross-btn'><FaTrash className='cross-icon' /></button>
                         </div>
                     </div>

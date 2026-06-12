@@ -13,6 +13,7 @@ import LoginPage from './components/login'
 import Signup from './components/singin'
 import Products from './components/Products'
 import SpecificProduct from './components/specificProduct'
+import PaymentComponent from './components/Payment'
 
 class App extends Component{
 
@@ -20,23 +21,25 @@ class App extends Component{
         cartList:[],
         wishList:[],
         allSelected:true,
-        userDetails:{}
-    }
-
-    getUserDetails = (data) => {
-        this.setState({userDetails:data})
     }
 
 
     addToCart = (data, itemQuantity) => {
-        const {cartList, wishList} = this.state
+        const {cartList} = this.state
         const findObj = cartList.find(each => each.id === data.id)
-        const filteredData = wishList.filter(each => each.id !== data.id)
         if(findObj === undefined){
             const newObj = {...data, quantity:itemQuantity, isSelected:true}
             this.setState(prevState => ({
                 cartList:[...prevState.cartList, newObj],
-                wishList:filteredData
+            }))
+        }else{
+            this.setState(prevState => ({
+                cartList:prevState.cartList.map(each => {
+                    if(each.id === data.id){
+                        return {...each, quantity: each.quantity + itemQuantity}
+                    }
+                    return each
+                })
             }))
         }
     }
@@ -50,6 +53,12 @@ class App extends Component{
     clearCart = () => {
         this.setState({cartList:[]})
     }
+
+    placeOrder = () => {
+        const {cartList} = this.state
+        const newCartList = cartList.filter(each => each.isSelected === false)
+        this.setState({cartList:newCartList})
+    } 
 
 
     changeAllSelectedStatus = () => {
@@ -105,15 +114,37 @@ class App extends Component{
 
     addToWishList = (data) => {
         const {wishList} = this.state
-        const obj = wishList.find(each => each.id === data.id)
-        this.setState(prevState => ({
+        const item = wishList.find(each => each.id === data.id)
+        if(item === undefined){
+            this.setState(prevState => ({
                 wishList:[...prevState.wishList, data]
             }))
-        // if(obj){
-        //     this.setState(prevState => ({
-        //         wishList:[...prevState.wishList, data]
-        //     }))
-        // }
+        }
+    }
+
+    addToCartFromWishlist = (data, quantity) => {
+        const {cartList, wishList} = this.state
+        const newWishList = wishList.filter(each => each.id !== data.id)
+        const findItem = cartList.find(each => each.id === data.id)
+        const newItem = {...data, quantity:1, isSelected:true}
+
+        if(findItem === undefined){
+            this.setState(prevState => ({
+                cartList:[...prevState.cartList, newItem]
+            }))
+        }else{
+            this.setState(prevState => ({
+                cartList:prevState.cartList.map(each => {
+                    if(each.id === data.id){
+                        return {...each, quantity:each.quantity + quantity}
+                    }
+                    return each
+                })
+            }))
+        }
+
+        this.setState({wishList:newWishList})
+
     }
 
     removeFromWishList = (removeId) => {
@@ -127,25 +158,25 @@ class App extends Component{
     }
 
     render(){
-        const {cartList, allSelected, userDetails, wishList} = this.state
-        
+        const {cartList, allSelected, wishList} = this.state
+        console.log(wishList)
         return(
             <cartContext.Provider value={{
                 cartList,
                 wishList,
                 allSelected,
-                userDetails,
-                getUserDetails:this.getUserDetails,
                 addToCart: this.addToCart,
                 removeFromCart: this.removeFromCart,
                 addToWishList:this.addToWishList,
                 removeFromWishList:this.removeFromWishList,
+                addToCartFromWishlist: this.addToCartFromWishlist,
                 deCreaseProductQuantity: this.deCreaseProductQuantity,
                 inCreaseProductQuantity: this.inCreaseProductQuantity,
                 clearCart: this.clearCart,
                 clearWishList:this.clearWishList,
                 changeCheckboxStatus: this.changeCheckboxStatus,
-                changeAllSelectedStatus: this.changeAllSelectedStatus
+                changeAllSelectedStatus: this.changeAllSelectedStatus,
+                placeOrder:this.placeOrder
             }}>
                 <BrowserRouter>
                     <Switch>
@@ -156,6 +187,7 @@ class App extends Component{
                         <ProtectedRoute exact path='/products/:id' component={SpecificProduct} />
                         <ProtectedRoute exact path='/wishlist' component={WishList} />
                         <ProtectedRoute exact path='/cart' component={Cart} />
+                        <ProtectedRoute exact path='/success' component={PaymentComponent} />
                         <Route path='/not-fount' component={NotFound} />
                         <Redirect to='/not-found' />
                     </Switch>

@@ -1,0 +1,53 @@
+.comment-container{
+    display: flex;
+    margin-bottom: 6px;
+}
+
+.latter-container{
+    background-color: lightslategrey;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-top: 22px;
+}
+
+.person{
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.name-comment-container{
+    margin-left: 12px;
+}
+
+.commentater{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    margin-bottom: 0px;
+    color: black;
+}
+
+.comment{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: gray;
+}
+
+.star{
+    color: gold;
+    margin-left: 5px;
+    font-size: 15px;
+}
+
+.customer-rating{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+.customer-review-rating-container{
+    display: flex;
+}

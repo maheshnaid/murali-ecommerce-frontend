@@ -1,6 +1,6 @@
 import './index.css'
 import Header from '../Header'
-import Fotter from '../Fotter'
+import Footer from '../FooterComponent'
 import { Link } from 'react-router-dom'
 
 const Home = () => (
@@ -14,7 +14,7 @@ const Home = () => (
                 <div className='button-container'><Link to='/products'><button className='home-button'>SHOW NOW</button></Link></div>
             </div>
         </div>
-        <Fotter />
+        <Footer />
     </>
 )
 

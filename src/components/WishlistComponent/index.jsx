@@ -2,18 +2,18 @@ import { Link } from 'react-router-dom'
 import Header from '../Header'
 import WishlistItem from '../WishlistItem'
 import cartContext from '../../context/cartContext'
-import Fotter from '../Fotter'
+import Footer from '../FooterComponent'
 import './index.css'
 
+import { FaArrowLeftLong } from "react-icons/fa6";
 
 const WishList = () => {
 
     const renderEmptyWishlistView = () => (
         <div className='wishlist-container'>
-            <img src='https://cdni.iconscout.com/illustration/premium/thumb/empty-wishlist-illustration-svg-download-png-9824480.png' alt='wishlist image' className='empty-wishlist-img' />
             <h1 className='empty-wishlist-heading'>Your Whishlist is Empty</h1>
             <p className='empty-wishlist-note'>Save items that you like in your wishlist</p>
-            <Link to="/products"><button className='shop-now'>SHOP NOW</button></Link>
+            <Link to="/products"><button className='add-from-bag'>SHOP NOW</button></Link>
         </div>
     )
 
@@ -28,11 +28,12 @@ const WishList = () => {
                 
                 return (
                     <>
+                    <Link to="/products"><FaArrowLeftLong className='cart-left-arrow' /></Link>
                         {wishList.length > 0 ? 
                             <>
                                 <div className='wishlist-header'>
                                     <h1 className='wishlist-heading'>Wishlist</h1>
-                                    <button onClick={onClickClearWishList} className='clear-wishlist' type='button'>Remove All</button>
+                                    <button onClick={onClickClearWishList} className='clear-wishlist' type='button'>Clear Wishlist</button>
                                 </div>
                                 <ul className='ul-wishlist-container'>
                                     {wishList.map(each =>(
@@ -43,7 +44,6 @@ const WishList = () => {
                         : 
                         renderEmptyWishlistView()
                         }
-                    <Fotter />
                     </>
                 )
             }}
