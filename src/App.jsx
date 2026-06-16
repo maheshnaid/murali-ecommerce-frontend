@@ -119,6 +119,11 @@ class App extends Component{
             this.setState(prevState => ({
                 wishList:[...prevState.wishList, data]
             }))
+        }else{
+            const filterlist = wishList.filter(each => each.id !== data.id)
+            this.setState(prevState => ({
+                wishList:filterlist
+            }))
         }
     }
 

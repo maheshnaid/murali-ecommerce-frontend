@@ -219,8 +219,8 @@
 .span-item{
     color: #8f8785;
     position: absolute;
-    left: 11px;
-    bottom: 22px;
+    left: 12px;
+    bottom: 23px;
     font-size: 8px;
     height: 15px;
     width: 15px;
@@ -234,8 +234,8 @@
 
 .wish-list-count{
     position: absolute;
-    left: 20px;
-    bottom: 22px;
+    left: 22px;
+    bottom: 23px;
     height: 15px;
     width: 15px;
     border-radius: 50%;

@@ -1,3 +1,7 @@
+.about-container{
+  padding-top: 100px;
+}
+
 @media (min-width:768px){
     .about-container{
         display: flex;
@@ -16,13 +20,6 @@
 .specific-product-details{
     max-width: 380px;
 }
-
-/* @media (min-width:576px){
-    .specific-product-details{
-        margin-left: 34px;
-        padding: 0px;
-    }
-} */
 
 .specific-product-page{
     padding: 12px;
@@ -308,10 +305,17 @@
 
 }
 
+.btn-container{
+    position: sticky;
+    bottom: 0px;
+    background-color: #ffffff;
+    padding: 12px 0px 12px 0px;
+}
+
 .add-toCart{
     font-family: Arial, Helvetica, sans-serif;
     height: 40px;
-    width: 150px;
+    width: 70%;
     font-size: 12px;
     color: #ffffff;
     background-color: #1a75ff;
@@ -324,9 +328,16 @@
     justify-content: center;
 }
 
+@media (min-width:576px) {
+    .add-toCart{
+        width: 150px;
+    }
+}
+
 .add-toCart:active {
   transform: scale(0.98);
 }
+
 
 .add-wishlist{
     font-family: Arial, Helvetica, sans-serif;
@@ -364,9 +375,29 @@
     }
 }
 
-.quantity-add-to-cart{
-    display: flex;
-    align-items: center;
+
+.dill-button{
+    height: 40px;
+    width: 30%;
+    background-color: #ffffff;
+    border: 1px solid #cfcfd1;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 6px;
+}
+
+.dill-active{
+    border: 1px solid #EF4444;
+}
+
+@media (min-width:768px) {
+    .dill-button{
+        display: none;
+    }
+}
+
+.dill-icon{
+    font-size: 24px;
 }
 
 @media(min-width:768px){
@@ -377,39 +408,8 @@
     }
 }
 
-.simillar-product-container{
-    margin-top: 10px;
-    padding: 6px;
-}
-
-
-.simillar-product-list{
-    padding-left: 0px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 6px;
-    list-style-type: none;
-    margin-top: 0px;
-    width: 800px;
-}
-
-
-@media (max-width:768px){
-    .simillar-product-list{
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));;
-        width: 100%;
-    }
-}
-
-
-@media (max-width:768px){
-    .similar-heading{
-        font-size: 18px;
-    }
-}
-
-.loading-container{
-    height: 30vh;
+.wishlist-loading-container{
+    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -518,6 +518,25 @@
 
     70%{
         transform: scale(1.2);
+    }
+
+    100%{
+        transform: scale(1);
+    }
+}
+
+.btn{
+    animation: pop 0.5s ease-out;
+    border-color: #EF4444;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+
+    70%{
+        transform: scale(1.1);
     }
 
     100%{

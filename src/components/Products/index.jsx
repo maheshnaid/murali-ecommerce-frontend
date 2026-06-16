@@ -202,7 +202,7 @@ class Products extends Component{
 
 
     renderLoadingView = () => (
-        <div className='loading-container'>
+        <div className='products-loading-container'>
             <TailSpin color='#1a75ff' height='40' width='40' />
         </div>
     )
@@ -286,34 +286,6 @@ class Products extends Component{
         )
     }
 }
-
-
-    // changeIsFavoriteStatus = (id) => {
-    //     this.setState(prevState => ({
-    //         productsList:prevState.productsList.map(each => {
-    //             if(each.id === id){
-    //                 return {...each, isFavorite:!each.isFavorite}
-    //             }else{
-    //                 return each
-    //             }
-    //         })
-    //     }))
-    // }
-
-    // keyDownEvent = (e) => {
-    //     const { userInput, productsList } = this.state
-    //     // if(e.key === 'Enter'){
-    //         const filterSearchItems = productsList.filter(each => each.title.toLowerCase().includes(userInput.toLowerCase()))
-    //         this.setState({filteredList : filterSearchItems})
-    //     // }
-    // }
-
-    // onClickSearchIcon = () => {
-    //     const { userInput, productsList } = this.state
-    //     const filterSearchItems = productsList.filter(each => each.brand === userInput || each.category.includes(userInput) || each.tags.includes(userInput) || each.title.toLowerCase().includes(userInput))
-    //     this.setState({filteredList : filterSearchItems})
-    // }
-
 
 
 export default Products

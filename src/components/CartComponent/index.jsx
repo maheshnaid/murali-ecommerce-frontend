@@ -30,10 +30,9 @@ const Cart = () => {
                 )
 
                 return (
-                    <div className='your-cart'>
-                        <div>
-                            <h1 className='my-cart'>Bag</h1>
-                            <div className='clear-all-button-container'>
+                    <div className='cart'>
+                        <div style={{padding:'12px'}}>
+                            <div className='checkbox-clearall-button'>
                                 <div>
                                     <input className='checkbox' checked={allSelected} onChange={onChangeAllSelected} type='checkbox' id='checkbox' />
                                     <label className='label' htmlFor='checkbox'>{noOfSelectedItem}/{cartLength} ITEMS SELECTED</label>
@@ -46,7 +45,6 @@ const Cart = () => {
                                 ))}
                             </ul>
                         </div>
-                       <CartSummary />
                     </div>
                 )
             }}
@@ -57,11 +55,11 @@ const Cart = () => {
         <div className='empty-cart-container'>
             <h1 className='empty-cart-heading'>Your cart is feeling little empty</h1>
             <p className='empty-cart-note'>There is nothing in your bag. lets add some items.</p>
-            <Link to='/wishlist'><button className='add-to-cart'>ADD ITEMS FROM WISHLIST</button></Link>
+            <Link to='/wishlist'><button className='add-from-wishlist'>ADD ITEMS FROM WISHLIST</button></Link>
         </div>
     )
 
-    const renderCartPage = () => (
+    const renderCartView = () => (
         <cartContext.Consumer>
             {value => {
                 const {cartList} = value 
@@ -73,11 +71,25 @@ const Cart = () => {
         </cartContext.Consumer>
     )
 
+    const renderCartPage = () => {
+        return (
+            <>
+                <div className='cart-page'>
+                    <div className='go-back'>
+                        <Link to='/products'><FaArrowLeftLong className='cart-left-arrow' /></Link>
+                        <h1 className='my-cart'>Bag</h1>
+                    </div>
+                    {renderCartView()}
+                </div>
+                <CartSummary />
+            </>
+        )
+    }
+
     return (
         <>
             <Header />
             <div className='cart'>
-                <Link to='/products'><FaArrowLeftLong className='cart-left-arrow' /></Link>
                 {renderCartPage()}
             </div>
         </>

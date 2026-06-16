@@ -119,7 +119,7 @@ class SpecificProduct extends Component{
                             className:'toast'
                     });
                     }else{
-                        toast.success("Item Already Saved", {
+                        toast.success("Product Removed", {
                         icon: <GoBookmarkFill className='bookmark' />,
                         duration:1500,
                         position:'bottom-center',
@@ -134,7 +134,6 @@ class SpecificProduct extends Component{
                             <Link to="/products">
                                 <FaArrowLeftLong className='left-arrow' />
                             </Link>
-                            <button onClick={onClickAddToWishList} className='heart-button'>{isFavObj}</button>
                         </div>
                         <div className='image-container'>
                             <img src={productUrl} alt='imagr' className='specific-product-img' />
@@ -171,16 +170,15 @@ class SpecificProduct extends Component{
                                 <p className='return-policy'>Easy {returnPolicy} and exchanges</p>
                             </div>
                             <hr className='h-line' />
-                            <div className='quantity-add-to-cart'>
-                                <div className='quantity-container'>
-                                    <button onClick={this.decreaseQuantity} className='quantity-button'>-</button>
-                                    <p className='quantity'>{quantity}</p>
-                                    <button onClick={this.increaseQuantity} className='quantity-button'>+</button>
-                                </div>
-                                <div className='btn-container'>
-                                    <button onClick={onClickAddToCart} className='add-toCart'><MdShoppingCart className='bag-icon' /> ADD TO BAG</button>
-                                    <button onClick={onClickAddToWishList} className={`add-wishlist ${favObj ? 'in' : 'not-in'}`}><MdFavorite className='gunde-icon' />{Buttontxt}</button>
-                                </div>
+                            <div className='quantity-container'>
+                                <button onClick={this.decreaseQuantity} className='quantity-button'>-</button>
+                                <p className='quantity'>{quantity}</p>
+                                <button onClick={this.increaseQuantity} className='quantity-button'>+</button>
+                            </div>
+                            <div className='btn-container'>
+                                <button onClick={onClickAddToWishList} className={favObj? 'dill-button btn' : 'dill-button'}>{isFavObj}</button>
+                                <button onClick={onClickAddToCart} className='add-toCart'><MdShoppingCart className='bag-icon' /> ADD TO BAG</button>
+                                <button onClick={onClickAddToWishList} className={`add-wishlist ${favObj ? 'in' : 'not-in'}`}><MdFavorite className='gunde-icon' />{Buttontxt}</button>
                             </div>
                         </div>
                     </div>
@@ -208,7 +206,7 @@ class SpecificProduct extends Component{
     }
 
     renderLodingView = () => (
-        <div className='loading-container'>
+        <div className='wishlist-loading-container'>
             <TailSpin color='#1a75ff' width='50' height='50' />
         </div>
     )

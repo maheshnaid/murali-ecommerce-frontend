@@ -27,14 +27,16 @@ const WishList = () => {
                 )
                 
                 return (
-                    <>
-                    <Link to="/products"><FaArrowLeftLong className='cart-left-arrow' /></Link>
+                    <div className='wishlist-page'>
+                        <div className='wishlist-header'>
+                            <div className='wishlist-back-container'>
+                                <Link to="/products"><FaArrowLeftLong className='wishlist-left-arrow' /></Link>
+                                <h1 className='wishlist-heading'>Wishlist</h1>
+                            </div>
+                            {wishList.length > 0 && <button onClick={onClickClearWishList} className='clear-wishlist' type='button'>Clear Wishlist</button>}
+                        </div>
                         {wishList.length > 0 ? 
                             <>
-                                <div className='wishlist-header'>
-                                    <h1 className='wishlist-heading'>Wishlist</h1>
-                                    <button onClick={onClickClearWishList} className='clear-wishlist' type='button'>Clear Wishlist</button>
-                                </div>
                                 <ul className='ul-wishlist-container'>
                                     {wishList.map(each =>(
                                         <WishlistItem wishItemData={each} key={each.id} />
@@ -44,7 +46,7 @@ const WishList = () => {
                         : 
                         renderEmptyWishlistView()
                         }
-                    </>
+                    </div>
                 )
             }}
         </cartContext.Consumer>
@@ -53,9 +55,9 @@ const WishList = () => {
     return (
         <>
     <Header />
-        <div className='wishlist-page'>
+        <>
             {renderWishItems()}
-        </div>
+        </>
     </>
     )
 }

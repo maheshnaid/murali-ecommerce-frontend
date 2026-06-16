@@ -62,15 +62,28 @@ const CartSummary = (props) => {
 
 
                 return (
-                    <div className='cart-summary-container'>
-                        <button onClick={onClickArrow} className='show-summary-button'>summary {arrowStatus}</button>
-                        <div className='summary' style={{display:showSummary ? 'block' : 'none'}}>
-                            <p className='total-price'>Total Price : Rs.{totalPrice}</p>
-                            <p className='after-discount-price'>After Discount Price : <span style={{color:'#00b300'}}>Rs.{totalPrice - afterDiscountPrice}</span>  <span style={{textDecoration:'line-through', color:'#737373'}}>Rs. {totalPrice}</span></p>
-                            <p className='saved'>You saved : <span style={{color:'#00b300'}}>Rs.{afterDiscountPrice}</span></p>
-                        </div>
-                        <button onClick={onClickPlaceOrder} className='order-button'>{spinnerValue ? <TailSpin color='#ffffff' height='20' width='20' /> : 'Place Order'}</button>
-                    </div>
+                    <>
+                        {cartList.length > 0 && (
+                            <div className='cart-summary-container'>
+                                <div className='summary'>
+                                    <button onClick={onClickArrow} className='show-summary-button'>summary {arrowStatus}</button>
+                                    <div style={{display:showSummary ? 'block' : 'none'}}>
+                                        <p className='total-price'>Total Price : Rs.{totalPrice}</p>
+                                        <p className='after-discount-price'>After Discount Price : <span style={{color:'#00b300'}}>Rs.{totalPrice - afterDiscountPrice}</span>  <span style={{textDecoration:'line-through', color:'#737373'}}>Rs. {totalPrice}</span></p>
+                                        <p className='saved'>You saved : <span style={{color:'#00b300'}}>Rs.{afterDiscountPrice}</span></p>
+                                    </div>
+                                </div>
+                                {/* <div className='price-button-container'>
+                                    <div className='price-tax'>
+                                        <p className='order-price'>Rs. {totalPrice - afterDiscountPrice}</p>
+                                        <p className='tax'>Including all taxes</p>
+                                    </div>
+                                    <button onClick={onClickPlaceOrder} className='order-button'>{spinnerValue ? <TailSpin color='#ffffff' height='20' width='20' /> : 'Place Order'}</button>
+                                </div> */}
+                                <button onClick={onClickPlaceOrder} className='order-button'>{spinnerValue ? <TailSpin color='#ffffff' height='20' width='20' /> : 'Place Order'}</button>
+                            </div>
+                        )}
+                    </>
                 )
             }}
         </cartContext.Consumer>

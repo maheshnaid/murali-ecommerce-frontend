@@ -5,7 +5,7 @@
     gap: 6px;
     list-style-type: none;
     margin-top: 0px;
-    padding-bottom: 80px;
+    padding-bottom: 30px;
 }
 
 
@@ -82,8 +82,8 @@
 .filters-products-container{
     display: flex;
     height: 90vh;
-    padding: 5px;
     margin-top: 0px;
+    padding-top: 120px;
 }
 
 .filters-container{
@@ -146,6 +146,8 @@
 .my-container{
     width: 100%;
     overflow: scroll;
+    height: 80vh;
+    scrollbar-width: none;
 }
 
 
@@ -186,4 +188,12 @@
     font-size: 13px;
     margin-left: 4px;
     color: #8f8785;
+}
+
+.products-loading-container{
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
