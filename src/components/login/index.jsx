@@ -106,7 +106,7 @@ const LoginPage = (props) => {
     const renderLoginUi = () => {
         return (
             <div className='login-page-container'>
-                <img src='https://media.istockphoto.com/id/1443921753/vector/a-young-female-african-character-in-denim-overalls-pushing-a-grocery-cart-in-a-supermarket.jpg?s=612x612&w=0&k=20&c=DJqZULOPh7Ki8MKUBjXe_PhM9esJfSHdepFUULiJiTI=' alt='image' className='vector-img' />
+                {/* <img src='https://media.istockphoto.com/id/1443921753/vector/a-young-female-african-character-in-denim-overalls-pushing-a-grocery-cart-in-a-supermarket.jpg?s=612x612&w=0&k=20&c=DJqZULOPh7Ki8MKUBjXe_PhM9esJfSHdepFUULiJiTI=' alt='image' className='vector-img' /> */}
                 <div className='login-container'>
                     <h1 className='login-heading'>Welcome!</h1>
                     <form onSubmit={onClickLogin} style={{padding:"20px"}}>

@@ -1,7 +1,6 @@
 .card{
     transition: 0.3s ease;
     border-radius: 6px;
-    
 }
 
 .card:hover{
@@ -19,7 +18,7 @@
 
 .product-image-container{
     background-color: #F5F5F5;
-    border-radius: 8px;
+    border-radius: 3px;
     display: flex;
     align-items: center;
     justify-content: center;

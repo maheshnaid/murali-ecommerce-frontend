@@ -3,7 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #dbd3d1;
+    background-color: #ffffff;
 }
 
 .login-container{
@@ -29,40 +29,36 @@
 .input-label{
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 500;
-    color: #b8aeab;
+    color: #3385ff;
     font-size: 11px;
-    margin-bottom: 2px;
+    margin-bottom: 12px;
 }
 
 .input-field{
-    padding: 12px;
     font-weight: 550;
     outline: none;
-    border: none;
-    background-color: #dbd3d1;
     color: #1F2937;
     font-family: Arial, Helvetica, sans-serif;
     width: 100%;
-    border-radius: 3px;
+    border: 1px solid #d9d9d9;
+    border-top: none;
+    border-left: none;
+    border-right: none;
 }
 
 .password-input{
     width: 100%;
     border: none;
     outline: none;
-    padding: 12px;
     color: #1F2937;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #dbd3d1;
-    border-radius: 3px;
 }
-
 
 .login-button{
     height: 35px;
     border: none;
     border-radius: 3px;
-    background-color: #dbd3d1;
+    background-color: #3385ff;
     color: #ffffff;
     cursor: pointer;
     width: 100%;
@@ -70,11 +66,11 @@
     justify-content: center;
     align-items: center;
     font-weight: 550;
-    margin-top: 12px;
+    margin-top: 20px;
 }
 
 .login-button:hover {
-  background-color: #b8aeab;
+  background-color: #1A73E8;
 }
 
 .login-button:active {
@@ -85,17 +81,10 @@
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 21px;
-    color: #dbd3d1;
+    color: #1A73E8;
     margin-top: 40px;
 }
 
-
-/* .login-text{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 13px;
-    color: black;
-    font-weight: 500;
-} */
 
 .login{
     font-family: Arial, Helvetica, sans-serif;
@@ -103,7 +92,6 @@
     color: blue;
     font-weight: 500;
     text-decoration: none;
-    margin-left: 1px;
 }
 
 .error{
@@ -123,14 +111,17 @@
 .eye-input-container{
     display: flex;
     align-items: center;
-    background-color: #dbd3d1;
-    border-radius: 3px;
+    background-color: none;
+    border: 1px solid #d9d9d9;
+    border-top: none;
+    border-left: none;
+    border-right: none;
 }
 
 .showpassword-button{
     background-color: transparent;
-    border: none;
     cursor: pointer;
+    border: none;
 }
 
 .eye-icon{

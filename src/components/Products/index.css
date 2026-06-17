@@ -6,6 +6,7 @@
     list-style-type: none;
     margin-top: 0px;
     padding-bottom: 30px;
+    /* border: 1px solid red; */
 }
 
 
@@ -116,7 +117,7 @@
 }
 
 .search-product-inout-container{
-    border: 1px solid #8f8785;
+    border: 1px solid #d9d9d9;
     width: 100%;
     display: flex;
     align-items: center;
@@ -146,7 +147,7 @@
 .my-container{
     width: 100%;
     overflow: scroll;
-    height: 80vh;
+    height: 100vh;
     scrollbar-width: none;
 }
 
@@ -164,6 +165,7 @@
     display: flex;
     align-items: center;
     color: #8f8785;
+    background-color: transparent;
 }
 
 .sort-name-icon-container{

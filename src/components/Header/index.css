@@ -143,8 +143,7 @@
 
 .popup-container{
     box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
-    width: 230px;
-    height: 110px;
+    padding: 40px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -156,14 +155,13 @@
 
 @media (min-width:576px){
     .popup-container{
-        width: 350px;
-        height: 140px;
+        padding: 40px;
     }
 }
 
 .Cancel{
     height: 30px;
-    width: 80px;
+    width: 100px;
     margin-right: 12px;
     color: gray;
     background-color: #ffffff;
@@ -179,7 +177,7 @@
 
 .Yes{
     height: 30px;
-    width: 80px;
+    width: 100px;
     color: #ffffff;
     background-color: #1A73E8;
     border: none;
@@ -194,7 +192,7 @@
 .popup-note{
     font-family: Arial, Helvetica, sans-serif;
     color: black;
-    font-size: 12px;
+    font-size: 14px;
     margin-bottom: 22px;
 }
 
