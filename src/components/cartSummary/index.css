@@ -12,15 +12,15 @@
     }
 }
 
-.summary{
+/* .summary{
     display: none;
-}
+} */
 
-@media(min-width:576px){
+/* @media(min-width:576px){
     .summary{
         display: block;
     }
-}
+} */
 
 .show-summary-button{
     font-family: Arial, Helvetica, sans-serif;
@@ -75,11 +75,6 @@
     font-family: 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-/* @media (max-width:576px){
-    .order-button{
-        width: 70%;
-    }
-} */
 
 .order-button:active{
     transform: scale(0.99);

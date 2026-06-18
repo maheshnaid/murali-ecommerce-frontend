@@ -73,13 +73,6 @@ const CartSummary = (props) => {
                                         <p className='saved'>You saved : <span style={{color:'#00b300'}}>Rs.{afterDiscountPrice}</span></p>
                                     </div>
                                 </div>
-                                {/* <div className='price-button-container'>
-                                    <div className='price-tax'>
-                                        <p className='order-price'>Rs. {totalPrice - afterDiscountPrice}</p>
-                                        <p className='tax'>Including all taxes</p>
-                                    </div>
-                                    <button onClick={onClickPlaceOrder} className='order-button'>{spinnerValue ? <TailSpin color='#ffffff' height='20' width='20' /> : 'Place Order'}</button>
-                                </div> */}
                                 <button onClick={onClickPlaceOrder} className='order-button'>{spinnerValue ? <TailSpin color='#ffffff' height='20' width='20' /> : 'Place Order'}</button>
                             </div>
                         )}
