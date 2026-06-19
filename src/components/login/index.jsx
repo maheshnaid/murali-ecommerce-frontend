@@ -4,6 +4,8 @@ import {Redirect} from 'react-router-dom'
 import { TailSpin } from 'react-loader-spinner'
 
 import { PiEyeClosed, PiEye } from "react-icons/pi"
+import { FaUser } from "react-icons/fa6";
+import { RiLockPasswordFill } from "react-icons/ri";
 
 import './index.css'
 
@@ -106,17 +108,22 @@ const LoginPage = (props) => {
     const renderLoginUi = () => {
         return (
             <div className='login-page-container'>
-                {/* <img src='https://media.istockphoto.com/id/1443921753/vector/a-young-female-african-character-in-denim-overalls-pushing-a-grocery-cart-in-a-supermarket.jpg?s=612x612&w=0&k=20&c=DJqZULOPh7Ki8MKUBjXe_PhM9esJfSHdepFUULiJiTI=' alt='image' className='vector-img' /> */}
                 <div className='login-container'>
                     <h1 className='login-heading'>Welcome!</h1>
                     <form onSubmit={onClickLogin} style={{padding:"20px"}}>
                         <div className="input-field-container">
-                            <label className="input-label" htmlFor="name">Name</label>
+                            <div className='label-icon-con'>
+                                <FaUser className='label-icon' />
+                                <label className="input-label" htmlFor="name">Name</label>
+                            </div>
                             <input onBlur={onBlurOnName} onChange={getUserName} id="name" className="input-field" type="text" />
                             <p className='error'>{errors.nameError}</p>
                         </div>
                         <div className="input-field-container">
-                            <label className="input-label" htmlFor="password">Password</label>
+                            <div className='label-icon-con'>
+                                <RiLockPasswordFill className='label-icon' />
+                                <label className="input-label" htmlFor="password">Password</label>
+                            </div>
                             <div className='eye-input-container'>
                                 <input onBlur={onBlurOnPassword} onChange={getUserPassword} id="password" className="password-input" type={showPassword ? 'text' : 'password'} />
                                 {userCredentials.password.length > 0 && <button type='button' onClick={changeShowPasswordStatus} className='showpassword-button'>{showPassword ? <PiEye className='eye-icon' /> : <PiEyeClosed className='eye-icon' />}</button>}
