@@ -79,8 +79,8 @@ const Header = (props) => {
                 <div className='bag-wishlist-container'>
                     {pathname === `/products/${params.id}` && <p className='link'><Link to='/wishlist' className={`nav-item ${pathname === '/wishlist' ? 'active' : 'in-active'}`}>{isWishlistActive}WISHLIST <span className={wishListLen > 0 ? 'wish-list-count' : ''}>{wishListLen > 0 && wishListLen}</span></Link></p>}
                     {pathname === `/products/${params.id}` && <p className='link'><Link to='/cart' className={`nav-item ${pathname === '/cart' ? 'active' : 'in-active'}`}>{isCartActive}BAG<span className={number > 0 ? 'span-item' : ''}>{number > 0 && number}</span></Link></p>}
-                    {pathname === `/wishlist` && <p className='link'><Link to='/cart' className={`nav-item ${pathname === '/cart' ? 'active' : 'in-active'}`}>{isCartActive}BAG<span className={number > 0 ? 'span-item' : ''}>{number > 0 && number}</span></Link></p>}
-                    {pathname === `/cart` && <p className='link'><Link to='/wishlist' className={`nav-item ${pathname === '/wishlist' ? 'active' : 'in-active'}`}>{isWishlistActive}WISHLIST <span className={wishListLen > 0 ? 'wish-list-count' : ''}>{wishListLen > 0 && wishListLen}</span></Link></p>}
+                    {pathname === `/wishlist` && <p className='link'><Link to='/cart' className={`nav-item in-active`}>{isCartActive}BAG<span className={number > 0 ? 'span-item' : ''}>{number > 0 && number}</span></Link></p>}
+                    {pathname === `/cart` && <p className='link'><Link to='/wishlist' className={`nav-item in-active`}>{isWishlistActive}WISHLIST <span className={wishListLen > 0 ? 'wish-list-count' : ''}>{wishListLen > 0 && wishListLen}</span></Link></p>}
                     <Popup
                         trigger={<button className='exit-button'><FiLogOut className='logout-icon' /></button>}
                         modal

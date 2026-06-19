@@ -33,6 +33,7 @@ class SpecificProduct extends Component{
     state = {
         quantity:1,
         selectedProduct:{},
+        similarProducts:[],
         apiStatus:apiStatusConstants.initial,
         cartStatus:false
     }
@@ -53,11 +54,20 @@ class SpecificProduct extends Component{
         const productResponse = await fetch(productApi, options)
         if(productResponse.ok){
             const responseData = await productResponse.json()
-            this.setState({selectedProduct:responseData, apiStatus:apiStatusConstants.success})
+            const similarProductsApi = `https://dummyjson.com/products/category/${responseData.category}`
+            const similarProductRes = await fetch(similarProductsApi, options)
+            const similaProductsData = await similarProductRes.json()
+            console.log(similaProductsData)
+            this.setState({
+                selectedProduct:responseData, 
+                apiStatus:apiStatusConstants.success,
+                similarProducts:similaProductsData.products
+            })
         }else{
             this.setState({apiStatus:apiStatusConstants.failure})
         }
     }
+
 
     increaseQuantity = () => {
         this.setState(prevState => ({quantity:prevState.quantity + 1}))
@@ -220,10 +230,27 @@ class SpecificProduct extends Component{
     )
 
 
+    renderSimilarProducts = () => {
+        const { similarProducts } = this.state
+        const limit = similarProducts.slice(0, 10)
+        return (
+            <div>
+                <h1 className='similar-heading'>Similar Products</h1>
+                <ul className='simialr-products-container'>
+                    {limit?.map(each => (
+                        <Product productDetails={each} key={each.id} />
+                    ))}
+                </ul>
+            </div>
+        )
+    }
+
+
     renderSuccessView = () => (
         <div className='specific-product-page'>
             <div>
                 {this.renderSelectedProduct()}
+                {this.renderSimilarProducts()}
                 {this.renderAllComments()}
             </div>
         </div>

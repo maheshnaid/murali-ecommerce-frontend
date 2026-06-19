@@ -16,7 +16,7 @@ function PaymentComponent(props){
     }
 
     const renderLodingView = () => (
-        <div className='loading-container'>
+        <div className='payment-loading-container'>
             <TailSpin color='#4d79ff' width='30' height='30' />
             <p className='wait'>Plaese Wait a Moment..!</p>
         </div>
@@ -24,7 +24,7 @@ function PaymentComponent(props){
 
     setTimeout(() => {
         setSuccessLoading(true)
-    }, 8000)
+    }, 3000)
 
     return (
         <div className='payment-page'>

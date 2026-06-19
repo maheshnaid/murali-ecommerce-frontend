@@ -3,10 +3,11 @@
     border-radius: 6px;
 }
 
-.card:hover{
-    transform: scale(1.06);
+@media (min-width:768px) {
+    .card:hover{
+        transform: scale(1.06);
+    }
 }
-
 
 .item{
     text-decoration: none;

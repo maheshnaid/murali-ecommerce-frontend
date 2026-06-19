@@ -551,14 +551,13 @@
 
 .revies-heading{
     font-family: Arial, Helvetica, sans-serif;
-    font-size:24px;
-    color: #111827;
+    font-size:16px;
+    color: #1a75ff;
 }
 
 .gunde-icon{
     font-size: 19px;
     margin-right: 4px;
-    /* color: #EF4444; */
 }
 
 .bag-icon{
@@ -590,4 +589,36 @@
     color: #000000;
     font-weight: 550;
     font-size: 14px;
+}
+
+.simialr-products-container{
+    padding: 0px;
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
+    margin: 0px;
+}
+
+@media (max-width:768px){
+    .simialr-products-container{
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));;
+        width: 100%;
+    }
+}
+
+.similar-heading{
+    font-family: Arial, Helvetica, sans-serif;
+    color: #1a75ff;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+@media (min-width:768px) {
+    .similar-heading{
+        font-size: 28px;
+    }
+
+    .revies-heading{
+        font-size:28px;
+    }
 }

@@ -103,6 +103,7 @@ class Products extends Component{
         this.getAllProducts()
     }
 
+
     updateRating = (rating) => {
         return Math.round(rating * 10) / 10
     }
@@ -143,6 +144,7 @@ class Products extends Component{
         }
     }
 
+    
     getSortByValue = (e) => {
         this.setState({categoryStatus:true})
         const { filterProducts } = this.state
