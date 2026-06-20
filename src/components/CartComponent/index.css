@@ -8,9 +8,9 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+
 .cart-page{
-    height: 100vh;
-    margin-top: 90px;
+    padding-top: 90px;
 }
 
 .my-cart{
@@ -40,7 +40,7 @@ body::-webkit-scrollbar {
     display: flex;
     align-items: center;
     position: sticky;
-    top: 90px;
+    top: 85px;
     background-color: #ffffff;
     padding-left: 12px;
 }
@@ -94,30 +94,19 @@ body::-webkit-scrollbar {
 }
 
 .cart{
-    height: 80vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
 .ul-cart-list{
-    height: 80vh;
+    height: 90vh;
     padding-left: 0px;
-    padding-bottom: 90px;
     overflow-y: auto;
     scrollbar-width: none;
-
 }
 
-/* .products-container {
-  overflow-y: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.products-container::-webkit-scrollbar {
-  display: none;
-} */
 
 .empty-cart-heading{
     color: #000000;
