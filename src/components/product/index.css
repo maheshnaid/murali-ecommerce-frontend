@@ -34,8 +34,8 @@
 
 @media (max-width:768px){
     .product-image{
-        height: 100px;
-        width: 100px;
+        height: 150px;
+        width: 150px;
     }
 }
 
@@ -55,14 +55,14 @@
 
 .final-mrp{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 10px;
+    font-size: 11px;
     color: #111827;
     font-weight: 550;
 }
 
 .mrp{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 10px;
+    font-size: 11px;
     color: gray;
     text-decoration: line-through;
     font-weight: 550;
@@ -76,7 +76,7 @@
 
 @media(min-width:576px) {
     .final-mrp{ 
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .mrp{

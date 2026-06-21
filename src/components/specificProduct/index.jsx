@@ -235,7 +235,7 @@ class SpecificProduct extends Component{
         const limit = similarProducts.slice(0, 10)
         return (
             <div>
-                <h1 className='similar-heading'>Similar Products</h1>
+                <h1 className='similar-heading'>You May Like It</h1>
                 <ul className='simialr-products-container'>
                     {limit?.map(each => (
                         <Product productDetails={each} key={each.id} />
