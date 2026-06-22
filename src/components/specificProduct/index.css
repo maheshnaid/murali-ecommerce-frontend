@@ -1,5 +1,5 @@
 .about-container{
-  padding-top: 100px;
+  margin-top: 100px;
 }
 
 @media (min-width:768px){
@@ -17,9 +17,7 @@
         margin-bottom: 28px;
     }
 }
-.specific-product-details{
-    max-width: 380px;
-}
+
 
 .specific-product-page{
     padding: 12px;
@@ -301,13 +299,19 @@
     font-size: 18px;
     margin-left: 15px;
     margin-right: 15px;
+}
 
+@media (max-width:576px) {
+    .btn-container{
+        position: fixed;
+        bottom: 0px;
+        width: 95%;
+        left: 10px;
+    }
 }
 
 .btn-container{
     display: flex;
-    position: sticky;
-    bottom: 0px;
     background-color: #ffffff;
     padding: 12px 0px 12px 0px;
 }
@@ -328,7 +332,7 @@
     justify-content: center;
 }
 
-@media (min-width:576px) {
+@media (min-width:768px) {
     .add-toCart{
         width: 150px;
     }
@@ -547,6 +551,7 @@
 
 .ul-comments-list{
     padding-left: 0px;
+    padding-bottom: 40px;
 }
 
 .revies-heading{
@@ -592,7 +597,7 @@
     padding: 0px;
     list-style-type: none;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
+    grid-template-columns: repeat(auto-fit, minmax(150px, 220px));
     margin: 0px;
     margin-bottom: 18px;
 }
