@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { Component } from 'react';
 import { Link } from 'react-router-dom'
 import {TailSpin} from 'react-loader-spinner'
@@ -93,8 +93,6 @@ class SpecificProduct extends Component{
         const actualPrice = price * 100
         const discountPrice = Math.round(actualPrice - (discountPercentage / 100) * actualPrice)
 
-        const sectionRef = useRef(null) 
-         
         return (
             <cartContext.Consumer>
                 {value => {
