@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Component } from 'react';
 import { Link } from 'react-router-dom'
 import {TailSpin} from 'react-loader-spinner'
@@ -93,7 +93,8 @@ class SpecificProduct extends Component{
         const actualPrice = price * 100
         const discountPrice = Math.round(actualPrice - (discountPercentage / 100) * actualPrice)
 
-        
+        const sectionRef = useRef(null) 
+         
         return (
             <cartContext.Consumer>
                 {value => {
@@ -199,6 +200,7 @@ class SpecificProduct extends Component{
     }
 
 
+
     renderAllComments = () => {
         const {selectedProduct} = this.state
         const {reviews = []} = selectedProduct
@@ -235,7 +237,7 @@ class SpecificProduct extends Component{
         const limit = similarProducts.slice(0, 10)
         return (
             <div>
-                <h1 className='similar-heading'>You May Like It</h1>
+                <h1 className='similar-heading'>Similar Products</h1>
                 <ul className='simialr-products-container'>
                     {limit?.map(each => (
                         <Product productDetails={each} key={each.id} />

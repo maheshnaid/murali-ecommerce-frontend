@@ -109,14 +109,14 @@ const LoginPage = (props) => {
         return (
             <div className='login-page-container'>
                 <div className='login-container'>
-                    <h1 className='login-heading'>Welcome!</h1>
+                    <h1 className='login-heading'>Welcome.!</h1>
                     <form onSubmit={onClickLogin} style={{padding:"20px"}}>
                         <div className="input-field-container">
                             <div className='label-icon-con'>
                                 <FaUser className='label-icon' />
                                 <label className="input-label" htmlFor="name">Name</label>
                             </div>
-                            <input onBlur={onBlurOnName} onChange={getUserName} id="name" className="input-field" type="text" />
+                            <input autoFocus onBlur={onBlurOnName} onChange={getUserName} id="name" className="input-field" type="text" />
                             <p className='error'>{errors.nameError}</p>
                         </div>
                         <div className="input-field-container">

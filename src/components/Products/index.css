@@ -1,10 +1,10 @@
 .products-list-container{
-    padding-left: 0px;
+    padding: 0px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
     list-style-type: none;
     margin-top: 0px;
-    padding-bottom: 30px;
+    padding-bottom: 50px;
 }
 
 
@@ -80,13 +80,13 @@
 
 .filters-products-container{
     display: flex;
-    height: 90vh;
-    margin-top: 0px;
-    padding-top: 120px;
+    height: 100vh;
+    margin-top: 120px;
+    padding: 12px;
 }
 
 .filters-container{
-    padding: 6px;
+    padding: 0px;
 }
 
 @media (max-width:768px){

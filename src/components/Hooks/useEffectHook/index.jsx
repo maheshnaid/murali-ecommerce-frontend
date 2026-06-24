@@ -14,7 +14,7 @@ function UseEffectHook(api){
     useEffect(() => { 
         setApiStatus(apiStatusConstants.progress)  
         fetch(api, options) 
-        .then((response) => { 
+        .then((response) => {
             if(response.ok){ 
                 setApiStatus(apiStatusConstants.success) 
                 return response.json() 
