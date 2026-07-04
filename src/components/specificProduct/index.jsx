@@ -96,9 +96,10 @@ class SpecificProduct extends Component{
         return (
             <cartContext.Consumer>
                 {value => {
-                    const {addToCart, addToWishList, wishList} = value
+                    const {addToCart, addToWishList, wishList, cartList} = value
 
                     const favObj = wishList.find(each => each.id === id)
+                    const cartObj = cartList.find(each => each.id === id)
                     
                     const isFavObj = favObj === undefined 
                     ? <MdFavoriteBorder className='un-selected heart' />
@@ -110,12 +111,21 @@ class SpecificProduct extends Component{
                     const onClickAddToCart = () => {
                         this.setState(prevState => ({cartStatus:!prevState.cartStatus}))
                         addToCart(selectedProduct,quantity)
-                        toast.success("Added To Bag", {
+                        if(cartObj === undefined){
+                            toast.success("Added to bag", {
                             icon: <MdShoppingCart />,
-                            duration:1500,
+                            duration:2000,
                             position:'bottom-center',
                             className:'toast'
-                    });
+                        });
+                        }else{
+                            toast.success("item already in your cart! quantity increased by one", {
+                            icon: <MdShoppingCart />,
+                            duration:2000,
+                            position:'bottom-center',
+                            className:'toast',
+                        });
+                        }
                 }
 
                     const onClickAddToWishList = () => {

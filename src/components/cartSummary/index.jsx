@@ -35,6 +35,15 @@ const CartSummary = (props) => {
                     return a
                 }, 0)
 
+                const selectAll = cartList.some(each => each.isSelected === true)
+                const itemsCount= cartList.reduce((acc,accu) => {
+                    if(accu.isSelected){
+                        acc += 1
+                    }
+                    return acc
+                },0)
+                
+
                 const onClickPlaceOrder = () => {
                     setSpinnerValue(true)
 
@@ -65,15 +74,18 @@ const CartSummary = (props) => {
                     <>
                         {cartList.length > 0 && (
                             <div className='cart-summary-container'>
+                                {selectAll ? <p className='small-note'>{itemsCount} {itemsCount > 1 ? 'items' : 'item'} selected for place order</p>: <p className='small-note'>No item selected. Please select atleast one item for place order</p>}
                                 <div className='summary'>
-                                    <button onClick={onClickArrow} className='show-summary-button'>summary {arrowStatus}</button>
-                                    <div style={{display:showSummary ? 'block' : 'none'}}>
-                                        <p className='total-price'>Total Price : Rs.{totalPrice}</p>
-                                        <p className='after-discount-price'>After Discount Price : <span style={{color:'#00b300'}}>Rs.{totalPrice - afterDiscountPrice}</span>  <span style={{textDecoration:'line-through', color:'#737373'}}>Rs. {totalPrice}</span></p>
-                                        <p className='saved'>You saved : <span style={{color:'#00b300'}}>Rs.{afterDiscountPrice}</span></p>
-                                    </div>
+                                    {/* <div>
+                                        <button onClick={onClickArrow} className='show-summary-button'>summary {arrowStatus}</button>
+                                        <div style={{display:showSummary ? 'block' : 'none'}}>
+                                            <p className='total-price'>Total Price : Rs.{totalPrice}</p>
+                                            <p className='after-discount-price'>After Discount Price : <span style={{color:'#00b300'}}>Rs.{totalPrice - afterDiscountPrice}</span>  <span style={{textDecoration:'line-through', color:'#737373'}}>Rs. {totalPrice}</span></p>
+                                            <p className='saved'>You saved : <span style={{color:'#00b300'}}>Rs.{afterDiscountPrice}</span></p>
+                                        </div>
+                                    </div> */}
+                                    <button onClick={onClickPlaceOrder} className='order-button'>{spinnerValue ? <TailSpin color='#ffffff' height='20' width='20' /> : 'Place Order'}</button>
                                 </div>
-                                <button onClick={onClickPlaceOrder} className='order-button'>{spinnerValue ? <TailSpin color='#ffffff' height='20' width='20' /> : 'Place Order'}</button>
                             </div>
                         )}
                     </>

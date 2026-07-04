@@ -29,13 +29,23 @@ const Cart = () => {
                     changeAllSelectedStatus()
                 )
 
+                const totalPrice = cartList.reduce((a, b, c) => {
+                    if(b.isSelected){
+                        a = a + Math.ceil(b.price) * b.quantity * 100
+                    }
+                    return a 
+                }, 0)
+
                 return (
                     <div className='cart'>
                         <div style={{padding:'12px'}}>
                             <div className='checkbox-clearall-button'>
-                                <div>
-                                    <input className='checkbox' checked={allSelected} onChange={onChangeAllSelected} type='checkbox' id='checkbox' />
-                                    <label className='label' htmlFor='checkbox'>{noOfSelectedItem}/{cartLength} ITEMS SELECTED</label>
+                                <div className='items-amount-con'>
+                                    <div>
+                                        <input className='checkbox' checked={allSelected} onChange={onChangeAllSelected} type='checkbox' id='checkbox' />
+                                        <label className='check-label' htmlFor='checkbox'>{noOfSelectedItem}/{cartLength} ITEMS SELECTED</label>
+                                    </div>
+                                    <p className='amount'>{`(₹ ${totalPrice})`}</p>
                                 </div>
                                 <button onClick={onClickClearCart} className='clear-button'>Clear Bag</button>
                             </div>

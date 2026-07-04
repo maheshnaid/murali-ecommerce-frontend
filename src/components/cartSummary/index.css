@@ -1,17 +1,19 @@
 .cart-summary-container{
-    padding: 12px 18px 12px 18px;
     position: sticky;
-    bottom: 0px;
+    bottom: 25px;
     background-color: #ffffff;
 }
 
-@media(min-width:576px){
+/* @media(min-width:576px){
     .cart-summary-container{
         position: sticky;
-        bottom: 0px;
+        bottom: 100px;
     }
-}
+} */
 
+.summary{
+    padding: 6px 18px 6px 18px;
+}
 
 .show-summary-button{
     font-family: Arial, Helvetica, sans-serif;
@@ -99,4 +101,13 @@
     color: gray;
     margin-top: 0px;
     font-size: 12px;
+}
+
+.small-note{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    text-align: center;
+    padding: 4px 0px 4px 0px;
+    background-color: #ff0066;
+    color: #ffffff;
 }
