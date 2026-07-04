@@ -17,6 +17,12 @@ import { TiStar } from "react-icons/ti";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
 import { GoBookmarkFill } from "react-icons/go";
+import { IoCashOutline } from "react-icons/io5";
+import { HiArrowPath } from "react-icons/hi2";
+import { HiOutlineExclamationCircle } from "react-icons/hi";
+import { LuPackageCheck } from "react-icons/lu";
+import { TbTruckDelivery } from "react-icons/tb";
+
 
 import Header from '../Header'
 
@@ -54,6 +60,7 @@ class SpecificProduct extends Component{
         const productResponse = await fetch(productApi, options)
         if(productResponse.ok){
             const responseData = await productResponse.json()
+            console.log(responseData)
             const similarProductsApi = `https://dummyjson.com/products/category/${responseData.category}`
             const similarProductRes = await fetch(similarProductsApi, options)
             const similaProductsData = await similarProductRes.json()
@@ -87,7 +94,7 @@ class SpecificProduct extends Component{
 
     renderSelectedProduct = () => {
         const {selectedProduct, quantity, cartStatus} = this.state
-        const {id, availabilityStatus, brand, title, price, description, rating, reviews = [], images = [], discountPercentage, returnPolicy} = selectedProduct
+        const {id, availabilityStatus, brand, title, price, description, rating, reviews = [], images = [], discountPercentage, returnPolicy, shippingInformation} = selectedProduct
         const reviewsCount = reviews.length
         const productUrl = images[0]
         const actualPrice = price * 100
@@ -177,16 +184,20 @@ class SpecificProduct extends Component{
                             </div>
                             <p className='product-description'>{description}</p>
                             <div className='min-container'>
-                                <img src='https://cdn-icons-png.magnific.com/512/5164/5164023.png' alt='In Stoke' className='in-stoke-img' />
+                                {availabilityStatus === 'In Stock' ? <LuPackageCheck className='in-stock-icon' /> : <HiOutlineExclamationCircle className='low-stock-icon' />}
                                 <p className='availability'>Product is Currently {availabilityStatus}</p>
                             </div>
                             <div className='min-container'>
-                                <img src='https://img.freepik.com/free-vector/cash-delivery-concept_23-2148798392.jpg?semt=ais_hybrid&w=740&q=80' alt='pay on delivery' className='pay-on-delivery-img' />
+                                <IoCashOutline className='cash-icon' />
                                 <p className='pay-on-delivery'>Pay on delivery is available</p>
                             </div>
                             <div className='min-container'>
-                                <img src='https://thumbs.dreamstime.com/b/well-organized-fully-editable-box-delivery-easy-returns-return-icon-any-use-like-print-media-web-commercial-kind-153727453.jpg' alt='easy return' className='return-img' />
+                                <HiArrowPath className='return-icon' />
                                 <p className='return-policy'>Easy {returnPolicy} and exchanges</p>
+                            </div>
+                            <div className='min-container'>
+                                <TbTruckDelivery className='shippng-icon' />
+                                <p className='return-policy'>{shippingInformation}</p>
                             </div>
                             <hr className='h-line' />
                             <div className='quantity-container'>

@@ -175,21 +175,21 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     color: #000000;
-    margin-left: 6px;
+    margin-left: 9px;
 }
 
 .pay-on-delivery{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     color: #000000;
-    margin-left: 6px;
+    margin-left: 9px;
 }
 
 .return-policy{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     color: #000000;
-    margin-left: 6px;
+    margin-left: 9px;
 }
 
 @media (min-width:576px){
@@ -212,22 +212,10 @@
     }
 }
 
-.in-stoke-img{
-    width: 30px;
-}
-
-.pay-on-delivery-img{
-    width: 30px;
-}
-
-.return-img{
-    width: 30px;
-}
 
 .min-container{
     display: flex;
     align-items: center;
-    margin-bottom: 0px;
 }
 
 .brand{
@@ -627,4 +615,29 @@
     .revies-heading{
         font-size:28px;
     }
+}
+
+.in-stock-icon{
+    font-size: 24px;
+    color: #16A34A;
+}
+
+.low-stock-icon{
+    font-size: 24px;
+    color: #ff1a1a;
+}
+
+.cash-icon{
+    font-size: 24px;
+    color: #2563EB;
+}
+
+.return-icon{
+    font-size: 24px;
+    color: #F59E0B;
+}
+
+.shippng-icon{
+    font-size: 24px;
+    color: #333333;
 }

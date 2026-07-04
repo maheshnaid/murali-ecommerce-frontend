@@ -50,11 +50,11 @@ const CartSummary = (props) => {
                     const checkItems = cartList.some(item => item.isSelected === true)
                     if(!checkItems){
                         setSpinnerValue(false)
-                        toast.error("Please Select Atleast One Item", {
-                            icon:<BiSolidError className='biError' />,
-                            duration:1500,
-                            position:'bottom-center',
-                    });
+                    //     toast.error("Please Select Atleast One Item", {
+                    //         icon:<BiSolidError className='biError' />,
+                    //         duration:1500,
+                    //         position:'bottom-center',
+                    // });
                     }else{
                         setTimeout(() => {
                         placeOrder();

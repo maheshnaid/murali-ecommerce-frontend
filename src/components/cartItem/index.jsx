@@ -61,7 +61,7 @@ const CartItem = (props) => {
 
 
                         <div className='price-delete-con'>
-                            <p className='cart-item-price'>Rs {inRupees} /-</p>
+                            <p className='cart-item-price'>₹ {inRupees}</p>
                             <button onClick={onClickRemoveFromCart} className='cross-btn'><FaTrash className='cross-icon' /></button>
                         </div>
                     </div>
