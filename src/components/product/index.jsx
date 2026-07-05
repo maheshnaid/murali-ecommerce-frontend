@@ -1,7 +1,12 @@
+import { useContext } from 'react';
+
 import './index.css'
 import { Link } from 'react-router-dom';
 import { TiStar } from "react-icons/ti";
+import { BsHandbagFill, BsHandbag } from "react-icons/bs";
+import { IoHeartSharp, IoHeartOutline } from "react-icons/io5";
 
+import cartContext from '../../context/cartContext'
 
 const Product = (props) => {
 
@@ -11,15 +16,27 @@ const Product = (props) => {
     const actualPrice = Math.round(price * 100)
     const discountPrice = Math.round(actualPrice - (discountPercentage / 100) * actualPrice)
 
+    const { addToCart, addToWishList, cartList, wishList } = useContext(cartContext)
     
+    const findwishItem = wishList.find(eachItem => eachItem.id === id)
+    const cartItem = cartList.find(eachItem => eachItem.id === id)
+    
+
+    const favIcon = findwishItem ? 
+    <IoHeartSharp className='img-heart-icon heart-color anime' />
+    :<IoHeartOutline className='img-heart-icon anime' />
+
+
     return (
         <li className='card'>
-            <Link className='item' to={`/products/${id}`}>
+            {/* <Link className='item' to={`/products/${id}`}> */}
                 <div className='product-card'>
                     <div className='product-image-container'>
-                        <img src={productImage} alt='image' className='product-image'/>
+                        <Link to={`/products/${id}`}><img src={productImage} alt='image' className='product-image'/></Link>
+                        <button onClick={() => addToWishList(productDetails)} className='img-heart-button' type='button'>{favIcon}</button>
+                        <button onClick={() => addToCart(productDetails)} type='button' className='img-button'>{!cartItem && <BsHandbag className='btn-bag' />}{cartItem ? 'Added' : 'Bag'}</button>
                     </div>
-                    <div>
+                    <div className='product-details-container'>
                         {brand && <h1 className='pro-brand'>{brand}</h1>}
                         <h1 className='product-name'>{title}</h1>
                         <div className='price-container'>
@@ -29,7 +46,7 @@ const Product = (props) => {
                         </div>
                     </div>
                 </div>
-            </Link>
+            {/* </Link> */}
         </li>
     )
 }

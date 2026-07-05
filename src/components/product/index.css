@@ -3,11 +3,11 @@
     border-radius: 6px;
 }
 
-@media (min-width:768px) {
+/* @media (min-width:768px) {
     .card:hover{
         transform: scale(1.06);
     }
-}
+} */
 
 .item{
     text-decoration: none;
@@ -25,6 +25,7 @@
     justify-content: center;
     padding: 12px;
     margin-bottom: 12px;
+    position: relative;
 }
 
 .product-image{
@@ -32,11 +33,86 @@
     width: 150px;
 }
 
+.img-button{
+    position: absolute;
+    bottom: -13px;
+    right: 13px;
+    height: 30px;
+    width: 90px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 550;
+    color: #1a75ff;
+    background-color: #ffffff;
+    border: 1px solid #1a75ff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.img-heart-button{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.img-heart-icon{
+    font-size: 24px;
+    color: #8c8c8c;
+}
+
+.heart-color{
+    color:#ff1a1a;
+}
+
+.anime{
+    animation: pop 0.4s ease-out;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+
+    70%{
+        transform: scale(1.5);
+    }
+
+    100%{
+        transform: scale(1);
+    }
+}
+/* .img-button:hover{
+    background-color: #0066ff;
+} */
+
+.btn-bag{
+    font-size: 16px;
+    margin-right: 6px;
+    color: #1a75ff;
+}
+
 @media (max-width:768px){
     .product-image{
         height: 130px;
         width: 130px;
     }
+
+    .img-button{
+        height: 30px;
+        width: 80px;
+        font-size: 10px;
+    }
+}
+
+.product-details-container{
+    padding-top: 4px;
 }
 
 .pro-brand{
@@ -47,7 +123,7 @@
 
 .product-name{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 13px;
+    font-size: 11px;
     line-height: 16px;
     color: gray;
     margin-bottom: -6px;

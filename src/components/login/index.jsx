@@ -29,7 +29,7 @@ const LoginPage = (props) => {
 
     const userCanLogin = async  () => {
         changeLoadingStatus(true)
-        const userDetails = {username:userCredentials.username, password:userCredentials.password}
+        const userDetails = {username:userCredentials.username.toLocaleLowerCase(), password:userCredentials.password.toLocaleLowerCase()}
         const api = 'https://dummyjson.com/auth/login'
         const optins = {
             method:'POST',

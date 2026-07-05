@@ -24,7 +24,7 @@ class App extends Component{
     }
 
 
-    addToCart = (data, itemQuantity) => {
+    addToCart = (data, itemQuantity = 1) => {
         const {cartList} = this.state
         const findObj = cartList.find(each => each.id === data.id)
         if(findObj === undefined){
