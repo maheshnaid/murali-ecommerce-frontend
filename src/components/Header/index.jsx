@@ -62,7 +62,7 @@ const Header = (props) => {
                 >
                 {close => (
                     <div className='popup-container'>
-                         <p className='popup-note'>Are you sure you want to Logout?</p>
+                         <p className='popup-note'>Are you sure want to Logout?</p>
                          <div className='popup-buttons-container'>
                             <button className='Cancel' onClick={close}>No</button>
                             <button className='Yes' onClick={logoutUser}>Yes</button>
@@ -87,7 +87,7 @@ const Header = (props) => {
                     >
                     {close => (
                         <div className='popup-container'>
-                            <p className='popup-note'>Are you sure you want to Logout?</p>
+                            <p className='popup-note'>Are you sure want to Logout?</p>
                             <div className='popup-buttons-container'>
                                 <button className='Cancel' onClick={close}>No</button>
                                 <button className='Yes' onClick={logoutUser}>Yes</button>

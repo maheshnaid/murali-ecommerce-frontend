@@ -29,13 +29,15 @@ const Product = (props) => {
     :<IoHeartOutline className='img-heart-icon anime' />
 
     const onClickAddToCart = () =>{
-        addToCart(productDetails)
-            toast.success("Added to Bag", {
-            duration:2000,
-            position:'bottom-center',
-            className:'toast-class',
-            icon: <BsHandbagFill className='toast-icon' />,
-        });
+        if(cartItem === undefined){
+            addToCart(productDetails)
+                toast.success("Added to Bag", {
+                duration:2000,
+                position:'bottom-center',
+                className:'toast-class',
+                icon: <BsHandbagFill className='toast-icon' />,
+            });
+        }
     }
 
     return (

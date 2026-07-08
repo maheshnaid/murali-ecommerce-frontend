@@ -44,7 +44,7 @@ const WishlistItem = (props) => {
                         <h1 className='wishlist-item-name'>{title}</h1>
                         <h1 className='wishlist-item-brand' >{brand ? brand : ''}</h1>
                         <div className='buttons-container'>
-                            <button type='button' onClick={onClickMoveToCart} className='move-to-cart'>Move To Bga</button>
+                            <button type='button' onClick={onClickMoveToCart} className='move-to-cart'>Move To Bag</button>
                             <button type='button' onClick={onClickCrossBtn} className='remove-from-cart'>Remove</button>
                         </div>
                     </div>
