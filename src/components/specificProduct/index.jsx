@@ -11,12 +11,11 @@ import Comment from '../Comment'
 import UseEffectHook from '../Hooks/useEffectHook'
 
 
-import { MdShoppingCart } from "react-icons/md";
+import { BsHandbagFill } from "react-icons/bs";
 import { LiaCommentsSolid } from "react-icons/lia";
 import { TiStar } from "react-icons/ti";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
-import { GoBookmarkFill } from "react-icons/go";
 import { IoCashOutline } from "react-icons/io5";
 import { HiArrowPath } from "react-icons/hi2";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
@@ -112,7 +111,7 @@ class SpecificProduct extends Component{
                     ? <MdFavoriteBorder className='un-selected heart' />
                     : <MdFavorite className='selected heart' />
 
-                    const Buttontxt = favObj ? 'WISHLISTED' : 'ADD TO WISHLIST'
+                    const Buttontxt = favObj ? 'WISHLISTED' : 'WISHLIST'
                     
 
                     const onClickAddToCart = () => {
@@ -120,17 +119,17 @@ class SpecificProduct extends Component{
                         addToCart(selectedProduct,quantity)
                         if(cartObj === undefined){
                             toast.success("Added to bag", {
-                            icon: <MdShoppingCart />,
+                            icon: <BsHandbagFill style={{fontSize:'12px'}} />,
                             duration:2000,
                             position:'bottom-center',
                             className:'toast'
                         });
                         }else{
-                            toast.success("item already in your cart! quantity increased by one", {
-                            icon: <MdShoppingCart />,
+                            toast.success("item quantity increasded by +1", {
+                            icon: <BsHandbagFill className='toast-icon' />,
                             duration:2000,
                             position:'bottom-center',
-                            className:'toast',
+                            className:'toast-class',
                         });
                         }
                 }
@@ -139,17 +138,10 @@ class SpecificProduct extends Component{
                         addToWishList(selectedProduct)
                         if(favObj === undefined){
                             toast.success("Added To Wishlist", {
-                            icon: "❤️",
+                            icon: <MdFavorite style={{fontSize:'19px', color:'#EF4444'}} />,
                             duration:1500,
                             position:'bottom-center',
                             className:'toast'
-                    });
-                    }else{
-                        toast.success("Product Removed", {
-                        icon: <GoBookmarkFill className='bookmark' />,
-                        duration:1500,
-                        position:'bottom-center',
-                        className:'toast'
                     });
                     }
                 }
@@ -207,7 +199,7 @@ class SpecificProduct extends Component{
                             </div>
                             <div className='btn-container'>
                                 <button onClick={onClickAddToWishList} className={favObj? 'dill-button btn' : 'dill-button'}>{isFavObj}</button>
-                                <button onClick={onClickAddToCart} className='add-toCart'><MdShoppingCart className='bag-icon' /> ADD TO BAG</button>
+                                <button onClick={onClickAddToCart} className='add-toCart'><BsHandbagFill className='bag-icon' /> ADD TO BAG</button>
                                 <button onClick={onClickAddToWishList} className={`add-wishlist ${favObj ? 'in' : 'not-in'}`}><MdFavorite className='gunde-icon' />{Buttontxt}</button>
                             </div>
                         </div>
@@ -255,14 +247,14 @@ class SpecificProduct extends Component{
         const { similarProducts } = this.state
         const limit = similarProducts.slice(0, 10)
         return (
-            <div>
+            <>
                 <h1 className='similar-heading'>Similar Products</h1>
                 <ul className='simialr-products-container'>
                     {limit?.map(each => (
                         <Product productDetails={each} key={each.id} />
                     ))}
                 </ul>
-            </div>
+            </>
         )
     }
 

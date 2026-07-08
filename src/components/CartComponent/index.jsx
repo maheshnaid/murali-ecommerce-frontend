@@ -45,7 +45,7 @@ const Cart = () => {
                                         <input className='checkbox' checked={allSelected} onChange={onChangeAllSelected} type='checkbox' id='checkbox' />
                                         <label className='check-label' htmlFor='checkbox'>{noOfSelectedItem}/{cartLength} ITEMS SELECTED</label>
                                     </div>
-                                    <p className='amount'>{`(₹ ${totalPrice})`}</p>
+                                    <p className='amount'>{`(₹${totalPrice})`}</p>
                                 </div>
                                 <button onClick={onClickClearCart} className='clear-button'>Clear Bag</button>
                             </div>

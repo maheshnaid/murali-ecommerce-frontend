@@ -5,7 +5,7 @@
 @media(min-width:768px){
     .home-image{
         width: 450px;
-        /* margin-right: 24px; */
+        margin-right: 24px;
     }
 }
 
@@ -13,7 +13,7 @@
     height: 100vh;
     display: flex;
     align-items: center;
-    justify-content:space-between;
+    justify-content:center;
     padding: 12px;
 }
 
@@ -38,6 +38,8 @@
     .home-description{
        text-align: start;
        width: 600px;
+       font-size: 22px;
+       line-height: 30px;
     }
 }
 

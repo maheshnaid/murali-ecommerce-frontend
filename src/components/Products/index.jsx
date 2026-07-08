@@ -189,7 +189,7 @@ class Products extends Component{
         const {filterProducts, categoryStatus} = this.state
 
         return (
-            <div>
+            <>
                 {categoryStatus ?
                 this.renderLoadingView() : 
                     <ul className='products-list-container'>
@@ -198,7 +198,7 @@ class Products extends Component{
                         ))}
                     </ul>
                 }
-            </div>
+            </>
         )
     }
 

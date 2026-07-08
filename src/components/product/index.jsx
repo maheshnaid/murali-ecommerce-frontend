@@ -5,8 +5,10 @@ import { Link } from 'react-router-dom';
 import { TiStar } from "react-icons/ti";
 import { BsHandbagFill, BsHandbag } from "react-icons/bs";
 import { IoHeartSharp, IoHeartOutline } from "react-icons/io5";
-
+import { MdShoppingCart } from "react-icons/md";
 import cartContext from '../../context/cartContext'
+
+import toast from "react-hot-toast";
 
 const Product = (props) => {
 
@@ -26,6 +28,15 @@ const Product = (props) => {
     <IoHeartSharp className='img-heart-icon heart-color anime' />
     :<IoHeartOutline className='img-heart-icon anime' />
 
+    const onClickAddToCart = () =>{
+        addToCart(productDetails)
+            toast.success("Added to Bag", {
+            duration:2000,
+            position:'bottom-center',
+            className:'toast-class',
+            icon: <BsHandbagFill className='toast-icon' />,
+        });
+    }
 
     return (
         <li className='card'>
@@ -34,7 +45,7 @@ const Product = (props) => {
                     <div className='product-image-container'>
                         <Link to={`/products/${id}`}><img src={productImage} alt='image' className='product-image'/></Link>
                         <button onClick={() => addToWishList(productDetails)} className='img-heart-button' type='button'>{favIcon}</button>
-                        <button onClick={() => addToCart(productDetails)} type='button' className='img-button'>{!cartItem && <BsHandbag className='btn-bag' />}{cartItem ? 'Added' : 'Bag'}</button>
+                        <button onClick={onClickAddToCart} type='button' className={cartItem ? 'added-to-cart' : 'img-button'}>{!cartItem && <BsHandbag className='btn-bag' />}{cartItem ? 'Added' : 'Bag'}</button>
                     </div>
                     <div className='product-details-container'>
                         {brand && <h1 className='pro-brand'>{brand}</h1>}
