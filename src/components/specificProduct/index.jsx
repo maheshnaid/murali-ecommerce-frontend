@@ -14,8 +14,8 @@ import UseEffectHook from '../Hooks/useEffectHook'
 import { BsHandbagFill } from "react-icons/bs";
 import { LiaCommentsSolid } from "react-icons/lia";
 import { TiStar } from "react-icons/ti";
-import { FaArrowLeftLong } from "react-icons/fa6";
-import { MdFavoriteBorder, MdFavorite } from "react-icons/md";
+import { FaArrowLeftLong, FaArrowRightLong  } from "react-icons/fa6";
+import { MdFavoriteBorder, MdFavorite, MdKeyboardArrowDown  } from "react-icons/md";
 import { IoCashOutline } from "react-icons/io5";
 import { HiArrowPath } from "react-icons/hi2";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
@@ -40,7 +40,9 @@ class SpecificProduct extends Component{
         selectedProduct:{},
         similarProducts:[],
         apiStatus:apiStatusConstants.initial,
-        cartStatus:false
+        cartStatus:false,
+        limit:6,
+        showLoader:false
     }
 
     componentDidMount(){
@@ -60,6 +62,7 @@ class SpecificProduct extends Component{
         if(productResponse.ok){
             const responseData = await productResponse.json()
             console.log(responseData)
+            const {limit} = this.state
             const similarProductsApi = `https://dummyjson.com/products/category/${responseData.category}`
             const similarProductRes = await fetch(similarProductsApi, options)
             const similaProductsData = await similarProductRes.json()
@@ -242,18 +245,43 @@ class SpecificProduct extends Component{
         </div>
     )
 
+    showMorePoducts = () => {
+        this.setState({showLoader:true})
+        const seconds = [2000, 2500, 3000, 3500]
+        const randomSeconds = Math.ceil(Math.random() * 3)
+        setTimeout(() => {
+            this.setState(prevState => ({limit:prevState.limit + 6, showLoader:false}))
+        }, seconds[randomSeconds])
+    }
+
 
     renderSimilarProducts = () => {
-        const { similarProducts } = this.state
-        const limit = similarProducts.slice(0, 10)
+        const { similarProducts, limit, showLoader } = this.state
+        const limitedProducts = similarProducts.slice(0, limit)
+
+        const showMoreBtn = similarProducts.length >= limit
+        const btnContent = showLoader
+        ? <TailSpin color='#1a75ff' width='20' height='20' />
+        : <MdKeyboardArrowDown  className='view-more-icon'/>
+
+        const sdBtnContent = showLoader
+        ? <TailSpin color='#ffffff' width='20' height='20' />
+        : <FaArrowRightLong className='right-arrow-icon'  />
+
         return (
             <>
                 <h1 className='similar-heading'>Similar Products</h1>
-                <ul className='simialr-products-container'>
-                    {limit?.map(each => (
-                        <Product productDetails={each} key={each.id} />
-                    ))}
-                </ul>
+                    <ul className='simialr-products-container'>
+                        {limitedProducts?.map(each => (
+                            <Product productDetails={each} key={each.id} />
+                        ))}
+                        <div className='sd-btn-container'>
+                            {showMoreBtn && <button onClick={this.showMorePoducts} className='sd-view-more-btn'>{sdBtnContent}</button>}
+                        </div>
+                    </ul>
+                <div className='view-more-btn-container'>
+                    {showMoreBtn && <button onClick={this.showMorePoducts} type='button' className='view-more-btn'>{!showLoader && 'show more'} {btnContent}</button>}
+                </div>
             </>
         )
     }

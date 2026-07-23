@@ -1,5 +1,4 @@
 .card{
-    transition: 0.3s ease;
     border-radius: 6px;
 }
 
@@ -53,7 +52,7 @@
     bottom: -13px;
     right: 13px;
     height: 30px;
-    width: 80px;
+    width: 90px;
     font-size: 13px;
     border: none;
     border-radius: 4px;
@@ -144,14 +143,14 @@
 
 .final-mrp{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 11px;
+    font-size: 10px;
     color: #111827;
     font-weight: 550;
 }
 
 .mrp{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 11px;
+    font-size: 10px;
     color: gray;
     text-decoration: line-through;
     font-weight: 550;
@@ -163,19 +162,19 @@
     color: #EF4444;
 }
 
-@media(min-width:576px) {
+/* @media(min-width:576px) {
     .final-mrp{ 
-        font-size: 12px;
+        font-size: 1px;
     }
 
     .mrp{
-        font-size: 12px;
+        font-size: 10px;
     }
 
     .offer{
         font-size: 12px;
     }
-}
+} */
 
 .toast-class{
     font-family: Arial, Helvetica, sans-serif;
