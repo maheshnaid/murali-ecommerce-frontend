@@ -265,8 +265,8 @@ class SpecificProduct extends Component{
         : <MdKeyboardArrowDown  className='view-more-icon'/>
 
         const sdBtnContent = showLoader
-        ? <TailSpin color='#ffffff' width='20' height='20' />
-        : <FaArrowRightLong className='right-arrow-icon'  />
+        ? <TailSpin color='#1a75ff' width='20' height='20' />
+        : <FaArrowRightLong className='right-arrow-icon' />
 
         return (
             <>
@@ -276,7 +276,7 @@ class SpecificProduct extends Component{
                             <Product productDetails={each} key={each.id} />
                         ))}
                         <div className='sd-btn-container'>
-                            {showMoreBtn && <button onClick={this.showMorePoducts} className='sd-view-more-btn'>{sdBtnContent}</button>}
+                            {showMoreBtn && <button onClick={this.showMorePoducts} className='sd-view-more-btn'>{!showLoader && 'More'} {sdBtnContent}</button>}
                         </div>
                     </ul>
                 <div className='view-more-btn-container'>
