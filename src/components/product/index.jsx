@@ -6,6 +6,7 @@ import { TiStar } from "react-icons/ti";
 import { BsHandbagFill, BsHandbag } from "react-icons/bs";
 import { IoHeartSharp, IoHeartOutline } from "react-icons/io5";
 import { MdShoppingCart } from "react-icons/md";
+import { RxDividerVertical } from "react-icons/rx";
 import cartContext from '../../context/cartContext'
 
 import toast from "react-hot-toast";
@@ -13,7 +14,7 @@ import toast from "react-hot-toast";
 const Product = (props) => {
 
     const {productDetails} = props
-    const {title, price, brand, images = [], rating, id, isFavorite, tags, discountPercentage} = productDetails
+    const {title, price, brand, images = [], rating, id, isFavorite, tags, discountPercentage, reviews} = productDetails
     const productImage = images[0]
     const actualPrice = Math.round(price * 100)
     const discountPrice = Math.round(actualPrice - (discountPercentage / 100) * actualPrice)
@@ -46,6 +47,11 @@ const Product = (props) => {
                 <div className='product-card'>
                     <div className='product-image-container'>
                         <Link to={`/products/${id}`}><img src={productImage} alt='image' className='product-image'/></Link>
+                        <div className='img-rating-review-container'>
+                            <p className='img-rating-icon'>{rating} <TiStar className='rating-icon' /></p>
+                            <p className='img-vline'><RxDividerVertical /></p>
+                            <p className='img-count'>{reviews.length}</p>
+                        </div>
                         <button onClick={() => addToWishList(productDetails)} className='img-heart-button' type='button'>{favIcon}</button>
                         <button onClick={onClickAddToCart} type='button' className={cartItem ? 'added-to-cart' : 'img-button'}>{!cartItem && <BsHandbag className='btn-bag' />}{cartItem ? 'Added' : 'Bag'}</button>
                     </div>
