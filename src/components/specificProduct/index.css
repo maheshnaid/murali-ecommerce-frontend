@@ -588,7 +588,7 @@
     padding: 0px;
     list-style-type: none;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 250px));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
     margin: 0px;
     margin-bottom: 18px;
 }

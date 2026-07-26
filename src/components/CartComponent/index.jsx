@@ -63,7 +63,7 @@ const Cart = () => {
 
     const renderEmptyCartView = () => (
         <div className='empty-cart-container'>
-            <h1 className='empty-cart-heading'>Your cart is feeling little empty</h1>
+            <h1 className='empty-cart-heading'>Your bag is feeling little empty</h1>
             <p className='empty-cart-note'>There is nothing in your bag. lets add some items.</p>
             <Link to='/wishlist'><button className='add-from-wishlist'>ADD ITEMS FROM WISHLIST</button></Link>
         </div>
